@@ -1,0 +1,113 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+boundary
+{
+    "(front|back)"
+    {
+        type            wedge;
+    }
+    defaultFaces
+    {
+        type    empty;
+    }
+    axis
+    {
+        type    empty;
+    }
+    "(crucibleBot|crucibleSide|freeSurf|crysInter)"
+    {
+        type            wall;
+    }
+}
+T
+{
+    // internalField   uniform 1685;
+
+    boundaryField
+    {
+        
+        freeSurf
+        {
+            type            fixedGradient;
+            gradient           uniform 0; // will be replaced by elmerToFoamBC
+        }
+
+        crucibleBot
+        {
+            type            fixedGradient;
+            gradient           uniform 0; // will be replaced by elmerToFoamBC
+        }
+
+        crucibleSide
+        {
+            type            fixedGradient;
+            gradient           uniform 0; // will be replaced by elmerToFoamBC
+        }
+        
+        crysInter
+        {
+            type            fixedValue;
+            value           uniform 0; // will be replaced by elmerToFoamBC
+        }        
+    }
+}
+
+U
+{
+    // internalField   uniform (0 0 0);
+
+    boundaryField
+    {
+        
+        // freeSurf
+        // {
+        //     type            slip;
+        // }
+        freeSurf
+        {
+            type            shearStressMarangoni;
+            gradTName       gradT;
+            MAcoef          -0.446;  // = -2.5e-4 / 0.00056 = (dgamma / dT) / mu = Marangoni coefficient / dynamic viscosity; 
+        }
+
+        crucibleSide
+        {
+            type            rotatingWallVelocity;
+            origin          (0 0 0);
+            axis            (0 1 0);
+            omega           -0.83776;  // rad/s = 8 rpm
+        }
+        
+        crucibleBot
+        {
+            type            rotatingWallVelocity;
+            origin          (0 0 0);
+            axis            (0 1 0);
+            omega           -0.83776;  // rad/s = 8 rpm
+        }
+
+        crysInter
+        {
+            type            rotatingWallVelocity;
+            origin          (0 0 0);
+            axis            (0 1 0);
+            omega           0.5236;  // rad/s = 5 rpm
+        }
+    }
+}
+
+
+// ************************************************************************* //

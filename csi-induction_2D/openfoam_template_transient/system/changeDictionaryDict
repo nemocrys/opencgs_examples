@@ -1,0 +1,74 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+boundary
+{
+    "(front|back)"
+    {
+        type            wedge;
+    }
+    defaultFaces
+    {
+        type    empty;
+    }
+    axis
+    {
+        type    empty;
+    }
+}
+T
+{
+    internalField   uniform 900;
+
+    boundaryField
+    {
+        
+        freeSurf
+        {
+            type            fixedValue;  // use this for coupling with fixed temperature
+            value           uniform 0;  // will be replaced by elmerToFoamBC
+
+            // type            fixedGradient;  // use this for coupling with fixed gradient
+            // gradient           uniform 0;  // will be replaced by elmerToFoamBC
+        }
+
+        crucibleBot
+        {
+            type            fixedValue;  // use this for coupling with fixed temperature
+            value           uniform 0;  // will be replaced by elmerToFoamBC
+            
+            // type            fixedGradient;  // use this for coupling with fixed gradient
+            // gradient           uniform 0;  // will be replaced by elmerToFoamBC
+        }
+
+        crucibleSide
+        {
+            type            fixedValue;  // use this for coupling with fixed temperature
+            value           uniform 0;  // will be replaced by elmerToFoamBC
+            
+            // type            fixedGradient;  // use this for coupling with fixed gradient
+            // gradient           uniform 0;  // will be replaced by elmerToFoamBC
+        }
+        
+        crysInter
+        {
+            type            fixedValue;
+            value           uniform 0;  // will be replaced by elmerToFoamBC
+        }        
+    }
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,647 @@
+mesh:
+  size_factor: 1
+  order: 2
+process_condition:
+  crystal_length: 257.e-3  # should not be greater than base_crystal_length + space for meniscus
+  crystal_radius: 76.2e-3  # must fit to crystal shape
+  melt_level: 82.69e-3  # be careful with heat shield
+  crucible_position: 336.41e-3 # y-coordinate of lowest point in crucible
+default:
+  base_crucible_position: 184.36e-3  # in base-setup, referring to coordinate definition
+  base_crystal_length: 837.e-3  # in base-setup
+
+vessel:
+  material: steel-1.4541  # 1.4571 according to construction
+  T_init: 300
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points: 
+        # - [0, -333.e-3]
+        # - [73.8e-3, -333.e-3]
+        - [0, -493.e-3]
+        - [73.8e-3, -493.e-3]
+        - [73.8e-3, 0]
+        - [292.5e-3, 0]
+        - [292.5e-3, 845.91e-3]
+    - type: circle-arc
+      start: [292.5e-3, 845.91e-3]
+      center: [0, 0]
+      end: [260.24e-3, 899.87e-3]
+      radius: 60.e-3
+    - type: line
+      points:
+        - [260.24e-3, 899.87e-3]
+        - [151.5e-3, 940.19e-3]
+        - [151.5e-3, 933.e-3]
+        - [125.e-3, 933.e-3]
+        - [125.e-3, 1072.e-3]
+        - [130.e-3, 1072.e-3]
+        - [130.e-3, 2819.e-3]
+        - [0, 2819.e-3]
+        - [0, 2825.e-3]
+        - [136.e-3, 2825.e-3]
+        - [136.e-3, 1057.e-3]
+        - [133.e-3, 1057.e-3]
+        - [133.e-3, 948.e-3]
+        - [145.e-3, 948.e-3]
+        - [152.5e-3, 946.13e-3]
+        - [262.87e-3, 905.26e-3]
+    - type: circle-arc
+      start: [262.87e-3, 905.26e-3]
+      center: [0, 0]
+      end: [300.e-3, 845.91e-3]
+      radius: 67.5e-3
+    - type: line
+      points:
+        - [300.e-3, 845.91e-3]
+        - [300.e-3, -22.e-3]
+        - [80.8e-3, -22.e-3]
+        # - [80.8e-3, -340.e-3]
+        # - [0, -340.e-3]
+        # - [0, -333.e-3]
+        - [80.8e-3, -500.e-3]
+        - [0, -500.e-3]
+        - [0, -493.e-3]
+vessel_inside:
+  material: vacuum
+  T_init: 300
+  mesh_size: 20.e-3
+  outline:
+    - type: line
+      points: 
+        # - [0, -333.e-3]
+        # - [73.8e-3, -333.e-3]
+        - [0, -493.e-3]
+        - [73.8e-3, -493.e-3]
+        - [73.8e-3, 0]
+        - [292.5e-3, 0]
+        - [292.5e-3, 845.91e-3]
+    - type: circle-arc
+      start: [292.5e-3, 845.91e-3]
+      center: [0, 0]
+      end: [260.24e-3, 899.87e-3]
+      radius: 60.e-3
+    - type: line
+      points:
+        - [260.24e-3, 899.87e-3]
+        - [151.5e-3, 940.19e-3]
+        - [151.5e-3, 933.e-3]
+        - [125.e-3, 933.e-3]
+        - [125.e-3, 1072.e-3]
+        - [130.e-3, 1072.e-3]
+        - [130.e-3, 2819.e-3]
+        - [0, 2819.e-3]
+        # - [0, -333.e-3]
+        - [0, -493.e-3]
+axis_bot_steel:
+  material: steel-1.4541  # 1.4571 according to construction
+  T_init: 300
+  mesh_size: 15.e-3
+  # y_bot: -333.e-3
+  y_bot: -493.e-3
+  y_top: -333.e-3
+  r: 30.e-3
+axis_bot_adapter:
+  material: graphite-FU8957
+  T_init: 300
+  mesh_size: 15.e-3
+  outline:
+    - type: line
+      points:
+        - [0, -333.e-3]
+        - [30.e-3, -333.e-3]
+        - [30.e-3, -230.21e-3]
+        - [27.95e-3, -230.21e-3]
+        - [27.5e-3, -231.9e-3]
+        - [10.e-3, -297.21e-3]
+        - [0, -297.21e-3]
+        - [0, -333.e-3]
+side_heater_bot:
+  material: graphite-FU8957
+  T_init: 1685
+  mesh_size: 5.e-3
+  dx: 18.e-3
+  dy: 20.e-3
+  bot_left_points:
+    - [207.e-3, 166.e-3]
+    - [207.e-3, 190.e-3]
+    - [207.e-3, 214.e-3]
+    - [207.e-3, 238.e-3]
+    - [207.e-3, 262.e-3]
+side_heater_mid:
+  material: graphite-FU8957
+  T_init: 1685
+  mesh_size: 5.e-3
+  dx: 18.e-3
+  dy: 20.e-3
+  bot_left_points:
+    - [207.e-3, 286.e-3]
+    - [207.e-3, 310.e-3]
+    - [207.e-3, 334.e-3]
+    - [207.e-3, 358.e-3]
+    - [207.e-3, 382.e-3]
+side_heater_top:
+  material: graphite-FU8957
+  T_init: 1685
+  mesh_size: 5.e-3
+  dx: 18.e-3
+  dy: 20.e-3
+  bot_left_points:
+    - [207.e-3, 406.e-3]
+    - [207.e-3, 430.e-3]
+    - [207.e-3, 454.e-3]
+    - [207.e-3, 478.e-3]
+    - [207.e-3, 502.e-3]
+bot_heater:
+  material: graphite-FU8957
+  T_init: 1685
+  mesh_size: 5.e-3
+  dx: 28.e-3
+  dy: 10.e-3
+  bot_left_points:
+    - [52.e-3, 105.e-3]
+    - [84.e-3, 105.e-3]
+    - [116.e-3, 105.e-3]
+    - [148.e-3, 105.e-3]
+    - [180.e-3, 105.e-3]
+axis_bot_graphite:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [7.5e-3, -297.21e-3]
+        - [10.0e-3, -297.21e-3]
+        - [27.5e-3, -231.9e-3]
+        - [27.5e-3, -204.4e-3]
+        - [34.e-3, -196.9e-3]  # modified, original: [35.e-3, -196.9e-3]
+        - [34.e-3, 123.1e-3]  # modified, original: [53.e-3, 123.1e-3]
+        - [145.86e-3, 123.1e-3]
+    - type: circle-arc
+      start: [145.86e-3, 123.1e-3]
+      center: [0, 1]
+      end: [152.93e-3, 126.03e-3]
+      radius: 10.e-3
+    - type: line
+      points:
+        - [152.93e-3, 126.03e-3]
+        - [167.07e-3, 140.17e-3]
+    - type: circle-arc
+      start: [167.07e-3, 140.17e-3]
+      center: [0, 1]
+      end: [170.e-3, 147.24e-3]
+      radius: 10.e-3
+    - type: line
+      points:
+        - [170.e-3, 147.24e-3]
+        - [170.e-3, 165.1e-3]
+    - type: circle-arc
+      start: [170.e-3, 165.1e-3]
+      center: [0, -1]
+      end: [168.e-3, 167.1e-3]
+      radius: 2.e-3
+    - type: line
+      points:
+        - [168.e-3, 167.1e-3]
+        - [150.e-3, 167.1e-3]
+        - [143.45e-3, 149.1e-3]
+        - [15.e-3, 149.1e-3]
+        - [15.e-3, -196.9e-3]
+        - [7.5e-3, -196.9e-3]
+        - [7.5e-3, -297.21e-3]
+crucible_support:
+  material: graphite-FU8957
+  T_init: 1685
+  mesh_size: 7.5e-3
+  outline:
+    - type: line
+      points:
+        - [0, 177.42e-3]
+        - [0, 149.1e-3]
+        - [143.45e-3, 149.1e-3]
+        - [150.e-3, 167.1e-3]
+        - [190.e-3, 167.1e-3]
+        - [190.e-3, 416.1e-3]
+        - [178.e-3, 416.1e-3]
+        - [178.e-3, 280.31390513690638e-3]
+    - type: circle-arc
+      start: [178.e-3, 280.31390513690638e-3]
+      center: [0, 1]
+      end: [116.12671232876706e-3, 195.548691291648402e-3]
+      radius: 89.e-3
+    - type: circle-arc
+      start: [116.12671232876706e-3, 195.548691291648402e-3]
+      center: [0, 1]
+      end: [0, 177.42e-3]
+      radius: 381.e-3
+crucible:
+  material: quartz
+  T_init: 1685
+  mesh_size: 5.e-3
+  outline:
+    - type: line
+      points:
+        - [178.e-3, 451.1e-3]
+        - [178.e-3, 280.31390513690638e-3]
+    - type: circle-arc
+      start: [178.e-3, 280.31390513690638e-3]
+      center: [0, 1]
+      end: [116.12671232876706e-3, 195.548691291648402e-3] 
+      radius: 89.e-3
+    - type: circle-arc
+      start: [116.12671232876706e-3, 195.548691291648402e-3]
+      center: [0, 1]
+      end: [0, 177.42e-3]
+      radius: 381.e-3
+    - type: line
+      points:
+        - [0, 177.42e-3]
+        - [0, 184.36e-3]
+    - type: circle-arc
+      start: [0, 184.36e-3]
+      center: [0, 1]
+      end: [113.99315068493153e-3, 202.155618223297963e-3]
+      radius: 374.e-3
+    - type: circle-arc
+      start: [113.99315068493153e-3, 202.155618223297963e-3]
+      center: [0, 1]
+      end: [171.e-3, 280.25390513690643e-3]
+      radius: 82.e-3
+    - type: line
+      points:
+        - [171.e-3, 280.25390513690643e-3]
+        - [171.e-3, 451.1e-3]
+        - [178.e-3, 451.1e-3]
+melt:
+  material: si-liquid
+  T_init: 1685
+  mesh_size: 5.e-3
+  maximum_outline:  # maximum outline of the melt = crucible volume
+    - type: circle-arc
+      start: [0, 184.36e-3]
+      center: [0, 1]
+      end: [113.99315068493153e-3, 202.155618223297963e-3]
+      radius: 374.e-3
+    - type: circle-arc
+      start: [113.99315068493153e-3, 202.155618223297963e-3]
+      center: [0, 1]
+      end: [171.e-3, 280.25390513690643e-3]
+      radius: 82.e-3
+    - type: line
+      points:
+        - [171.e-3, 280.25390513690643e-3]
+        - [171.e-3, 456.1e-3]
+        - [0, 456.1e-3]
+        - [0, 184.36e-3]
+  rho: 2560  # kg/m^3
+  gamma: 0.83  # N/m
+  beta: 11  # Deg, contact angle
+  g: 9.81  # m/s^2
+crystal:  # separate coordinate system, y=0 at triple point
+  material: si-solid
+  T_init: 1400
+  mesh_size: 15.e-3
+  outline:
+    - type: line
+      points:
+        - [0, 0]
+        - [76.2e-3, 0]
+        - [76.2e-3, 590.e-3]
+    - type: circle-arc
+      start: [76.2e-3, 590.e-3]
+      center: [0, 0]
+      end: [54.e-3, 612.6e-3]
+      radius: 25.e-3
+    - type: circle-arc
+      start: [54.e-3, 612.6e-3]
+      center: [0, 1]
+      end: [2.e-3, 652.e-3]
+      radius: 60.e-3
+    - type: line
+      points:
+        - [2.e-3, 652.e-3]
+        - [2.e-3, 687.e-3]
+        - [6.e-3, 692.e-3]
+        - [6.e-3, 837.e-3]
+        - [0, 837.e-3]
+        - [0, 0]
+seed_holder:  # separate coordinate system, y=0 at crystal top
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [6.e-3, -55.e-3]
+        - [11.06e-3, -55.e-3]
+    - type: circle-arc
+      start: [11.06e-3, -55.e-3]
+      center: [0, 1]
+      end: [12.96e-3, -53.63e-3]
+      radius: 2.e-3
+    - type: line
+      points:
+        - [12.96e-3, -53.63e-3]
+        - [32.5e-3, 5.e-3]
+        - [32.5e-3, 25.e-3]
+        - [21.e-3, 25.e-3]
+        - [21.e-3, 33.5e-3]
+        - [18.25e-3, 33.5e-3]
+        - [18.25e-3, 59.e-3]
+        - [6.e-3, 59.e-3]
+        - [6.e-3, -55.e-3]
+axis_top_pt1:
+  material: graphite-FU8957
+  T_init: 300
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [32.5e-3, 25.e-3]
+        - [32.5e-3, 88.e-3]
+        - [25.e-3, 95.e-3]
+        - [25.e-3, 625.e-3]
+        - [35.e-3, 634.e-3]
+        - [35.e-3, 700.e-3]
+        - [8.e-3, 700.e-3]
+        - [8.e-3, 73.e-3]
+        - [18.25e-3, 73.e-3]
+        - [18.25e-3, 33.5e-3]
+        - [21.e-3, 33.5e-3]
+        - [21.e-3, 25.e-3]
+        - [32.5e-3, 25.e-3]
+axis_top_pt2:
+  material: graphite-FU8957
+  T_init: 300
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [0.e-3, 700.e-3]
+        - [35.e-3, 700.e-3]
+        - [35.e-3, 765.e-3]
+        - [25.e-3, 775.e-3]
+        - [25.e-3, 885.e-3]
+        - [35.e-3, 955.e-3]
+        - [35.e-3, 960.e-3]
+        - [0.e-3, 960.e-3]
+        - [0.e-3, 700.e-3]
+axis_top_pt3:
+  material: steel-1.4541  # 1.4571 according to construction
+  T_init: 300
+  mesh_size: 15.e-3
+  y_bot: 960.e-3  # in separate coordinate system, y=0 at crystal top
+  y_top: 2819.e-3
+  r: 35.e-3
+
+insulation_bot_1:
+  material: GFA-10
+  T_init: 1000
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [90.e-3, 0.e-3]
+        - [190.e-3, 0.e-3]
+        - [190.e-3, 10.e-3]
+        - [90.e-3, 10.e-3]
+        - [90.e-3, 0.e-3]
+insulation_bot_2:
+  material: CFC
+  T_init: 1000
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [74.e-3, 10.e-3]
+        - [205.e-3, 10.e-3]
+        - [205.e-3, 20.e-3]
+        - [74.e-3, 20.e-3]
+        - [74.e-3, 10.e-3]
+insulation_bot_3:
+  material: GFA-10
+  T_init: 1000
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [41.5e-3, 20.e-3]
+        - [210.e-3, 20.e-3]
+        - [210.e-3, 50.e-3]
+        - [41.5e-3, 50.e-3]
+        - [41.5e-3, 20.e-3]
+graphite_bot_inside_1:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 7.5e-3
+  outline:
+    - type: line
+      points:
+        - [36.e-3, -10.e-3]
+        - [73.8e-3, -10.e-3]
+        - [73.8e-3, 0.e-3]
+        - [90.e-3, 0.e-3]
+        - [90.e-3, 10.e-3]
+        - [74.e-3, 10.e-3]
+        - [74.e-3, 20.e-3]
+        - [41.5e-3, 20.e-3]
+        - [41.5e-3, 10.e-3]
+        - [36.e-3, 10.e-3]
+        - [36.e-3, -10.e-3]
+graphite_bot_inside_2:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 7.5e-3
+  outline:
+    - type: line
+      points:
+        - [41.5e-3, 10.e-3]
+        - [41.5e-3, 95.e-3]
+        - [36.e-3, 95.e-3]
+        - [36.e-3, 10.e-3]
+        - [41.5e-3, 10.e-3]
+graphite_bot_outside_1:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 7.5e-3
+  outline:
+    - type: line
+      points:
+        - [190.e-3, 0.e-3]
+        - [217.e-3, 0.e-3]
+        - [217.e-3, 10.e-3]
+        - [210.e-3, 10.e-3]
+        - [210.e-3, 20.e-3]
+        - [205.e-3, 20.e-3]
+        - [205.e-3, 10.e-3]
+        - [190.e-3, 10.e-3]
+        - [190.e-3, 0.e-3]
+graphite_bot_outside_2:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 7.5e-3
+  outline:
+    - type: line
+      points:
+        - [210.e-3, 10.e-3]
+        - [217.e-3, 10.e-3]
+        - [217.e-3, 99.e-3]
+        - [210.e-3, 99.e-3]
+        - [210.e-3, 10.e-3]
+insulation_outside:
+  material: CBCF-15
+  T_init: 1000
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [217.e-3, 0.e-3]
+        - [285.e-3, 0.e-3]
+        - [285.e-3, 731.e-3]
+        - [188.87e-3, 731.e-3]
+        - [160.e-3, 681.e-3]
+        - [226.e-3, 681.e-3]
+        - [226.e-3, 571.e-3]
+        - [255.e-3, 571.e-3]
+        - [255.e-3, 556.e-3]
+        - [235.e-3, 556.e-3]
+        - [235.e-3, 145.e-3]
+        - [205.e-3, 145.e-3]
+        - [205.e-3, 132.e-3]
+        - [217.e-3, 132.e-3]
+        - [217.e-3, 0.e-3]
+heater_support_ring:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 5.e-3
+  outline:
+    - type: line
+      points:
+        - [205.e-3, 145.e-3]
+        - [235.e-3, 145.e-3]
+        - [235.e-3, 154.e-3]
+        - [205.e-3, 154.e-3]
+        - [205.e-3, 145.e-3]
+heatshield_support:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 7.5e-3
+  outline:
+    - type: line
+      points:
+        - [197.e-3, 556.e-3]
+        - [255.e-3, 556.e-3]
+        - [255.e-3, 571.e-3]
+        - [226.e-3, 571.e-3]
+        - [226.e-3, 681.e-3]
+        - [175.e-3, 681.e-3]
+        - [175.e-3, 671.e-3]
+        - [168.e-3, 671.e-3]
+        - [168.e-3, 662.e-3]
+        - [215.e-3, 662.e-3]
+        - [215.e-3, 566.e-3]
+        - [197.e-3, 566.e-3]
+        - [197.e-3, 556.e-3]
+insulation_heatshield_support:
+  material: CBCF-15
+  T_init: 1000
+  mesh_size: 10.e-3
+  outline:
+    - type: line
+      points:
+        - [197.e-3, 566.e-3]
+        - [215.e-3, 566.e-3]
+        - [215.e-3, 662.e-3]
+        - [197.e-3, 662.e-3]
+        - [197.e-3, 566.e-3]
+heatshield_outside:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 5.e-3
+  outline:
+    - type: line
+      points:
+        - [155.3e-3, 681.e-3]
+        - [175.e-3, 681.e-3]
+        - [175.e-3, 671.e-3]
+        - [166.e-3, 671.e-3]
+        - [139.87e-3, 458.15e-3]
+    - type: circle-arc
+      start: [139.87e-3, 458.15e-3]
+      center: [0, 1]
+      end: [123.98e-3, 444.1e-3]
+      radius: 16.e-3
+    - type: line
+      points:
+        - [123.98e-3, 444.1e-3]
+        - [109.03e-3, 444.1e-3]
+        - [108.e-3, 439.1e-3]
+        - [100.e-3, 439.1e-3]
+        - [106.2e-3, 469.1e-3]
+        - [110.e-3, 469.1e-3]
+        - [110.e-3, 464.1e-3]
+        - [114.2e-3, 464.1e-3]
+        - [114.2e-3, 451.1e-3]
+        - [122.295e-3, 451.1e-3]
+    - type: circle-arc
+      start: [122.295e-3, 451.1e-3]
+      center: [0, 1]
+      end: [132.85e-3, 459.88e-3]
+      radius: 10.e-3
+    - type: line
+      points:
+        - [132.85e-3, 459.88e-3]
+        - [152.845e-3, 622.72e-3]
+        - [155.3e-3, 642.72e-3]
+        - [155.3e-3, 681.e-3]
+heatshield_inside:
+  material: graphite-FU8957
+  T_init: 1000
+  mesh_size: 5.e-3
+  outline:
+    - type: line
+      points:
+        - [150.e-3, 664.71e-3]
+        - [155.3e-3, 664.71e-3]
+        - [155.3e-3, 642.72e-3]
+        - [152.845e-3, 622.72e-3]
+        - [114.2e-3, 464.1e-3]
+        - [110.e-3, 464.1e-3]
+        - [110.e-3, 469.1e-3]
+        - [150.e-3, 632.11e-3]
+        - [150.e-3, 664.71e-3]
+        # - [.e-3, .e-3]
+heatshield_filling:
+  material: GFA-10
+  T_init: 1000
+  mesh_size: 5.e-3
+  outline:
+    - type: line
+      points:
+        - [132.85e-3, 459.88e-3]
+        - [152.845e-3, 622.72e-3]
+        - [114.2e-3, 464.1e-3]
+        - [114.2e-3, 451.1e-3]
+        - [122.295e-3, 451.1e-3]
+    - type: circle-arc
+      start: [122.295e-3, 451.1e-3]
+      center: [0, 1]
+      end: [132.85e-3, 459.88e-3]
+      radius: 10.e-3
+
+# insulation_ring_top:
+#   material: CBCF-15
+#   T_init: 1000
+#   mesh_size: 10.e-3
+#   outline:
+#     - type: line
+#       points:
+#         - [285.e-3, 731.e-3]
+#         - [285.e-3, 781.e-3]
+#         - [100.e-3, 781.e-3]
+#         - [100.e-3, 731.e-3]
+#         - [285.e-3, 731.e-3]
+
+# phase_if: [[0.0508, 0.43602], [0.04, 0.4365], [0.03, 0.437], [0.01, 0.4385], [0, 0.439]]

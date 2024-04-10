@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+|  \\    /   O peration     | Version:  plus                                  |  
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Writes out surface files with interpolated field data in VTK format, e.g.
+    cutting planes, iso-surfaces and patch boundary surfaces.
+
+    This file includes a selection of example surfaces, each of which the user
+    should configure and/or remove.
+
+\*---------------------------------------------------------------------------*/
+
+type            surfaces;
+libs            ("libsampling.so");
+
+writeControl    writeTime;
+executeControl  writeTime;
+
+setFormat       raw;
+surfaceFormat   raw; //foam;  //vtk;
+interpolationScheme cellPointFace;  //cellPoint;
+
+x (1 0 0);
+y (0 1 0);
+z (0 0 1);
+origin (0 0 0);
+
+cuttingPlane
+{
+    type         cuttingPlane;
+    planeType    pointAndNormal;
+    pointAndNormalDict
+    {
+        basePoint    $origin;
+        normalVector $x;
+    }
+    interpolate  true;
+}
+
+isosurface
+{
+    type            isoSurfaceCell;
+    interpolate     true;
+}
+
+patchSurface
+{
+    type        patch;
+    interpolate false;  //true;
+}
+
+
+fields       (C1 C2);
+
+surfaces
+(
+
+//    xNormal
+//    {
+//        $cuttingPlane;
+//    }
+
+//    yNormal
+//    {
+//        $cuttingPlane;
+//        pointAndNormalDict
+//        {
+//            normalVector $y;      // Overrides default normalVector (1 0 0)
+//        }                         // $y: macro for (0 1 0)
+//    }
+
+//    zNormal
+//    {
+//        $cuttingPlane;
+//        pointAndNormalDict
+//        {
+//            basePoint    (0 0 2); // Overrides default basePoint (0 0 0)
+//            normalVector $z;      // $y: macro for (0 0 1)
+//        }
+//    }
+
+//    p100
+//    {
+//        $isosurface;
+//        isoField    p;
+//        isoValue    100;
+//    }
+
+    bottomSurf
+    {
+        $patchSurface;
+        patches     (bottomSurf);
+    }
+);
+
+// ************************************************************************* //

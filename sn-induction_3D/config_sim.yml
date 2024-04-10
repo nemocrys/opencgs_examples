@@ -1,0 +1,42 @@
+general:
+  rad_s2s: True
+  v_pull: 0.25  # mm/min
+heating:
+  current: 100  # A
+boundaries:
+  bnd_crystal:
+    htc: 0
+    T_ext: 293.15
+  bnd_melt:
+    htc: 0
+    T_ext: 293.15
+  bnd_crucible:
+    htc: 0
+    T_ext: 293.15
+  T_ext: 293.15  # for outside boundaries, rad2amb
+
+save_line_solver:
+  Exec Solver: 'After timestep'
+  Equation: '"SaveLine"'
+  Procedure: '"SaveData" "SaveLine"'
+  Filename: '"save_lines.dat"'
+  Output Directory: './results'
+  Variable 1: temperature
+  Variable 2: temperature grad 1
+  Variable 3: temperature grad 2
+  Variable 4: temperature grad 3
+
+FluxSolver:
+  Exec Solver: 'after timestep'
+  Equation: 'String "Flux Solver"'
+  Procedure: '"FluxSolver" "FluxSolver"'
+  Calculate Grad: 'Logical True'
+  Calculate Flux: 'Logical True'
+  Target Variable: 'String "Temperature"'
+  Flux Coefficient: 'String "Heat Conductivity"'
+  Linear System Solver: '"Iterative"'
+  Linear System Convergence Tolerance: 1.0e-8
+  Linear System Iterative Method: '"BiCGStab"'
+  Linear System Max Iterations: 500
+  Linear System Preconditioning: ILU
+  Linear System Residual Output: 0

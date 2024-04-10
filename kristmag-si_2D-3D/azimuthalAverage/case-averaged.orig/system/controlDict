@@ -1,0 +1,263 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+libs ("libshearStressMarangoni.so");
+
+application     icoFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.0001;
+
+deltaT          0.0001;
+
+writeControl    timeStep;
+
+writeInterval   1;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+
+functions
+{
+    // calculate gradient
+    grad1
+    {
+        // Mandatory entries (unmodifiable)
+        type            grad;
+        libs            (fieldFunctionObjects);
+
+        // Mandatory (inherited) entries (runtime modifiable)
+        field           T;
+        writeControl    writeTime;
+        writeInterval   1;
+    }
+
+    // write out boundary patch data
+    freeSurf  // Arbitrary name
+    {
+        type    surfaces;
+        libs    (sampling);
+        log     true;
+
+
+        setFormat raw;
+        surfaceFormat   raw;
+
+
+        writeControl    onEnd;
+
+
+        fields (T grad(T));
+
+
+        surfaces
+        {
+            // Oversized sampling - for general testing
+            patchSample
+            {
+                type      patch;
+                patches   (freeSurf);
+            }
+        }
+    }
+
+    crysInter  // Arbitrary name
+    {
+        type    surfaces;
+        libs    (sampling);
+        log     true;
+
+
+        setFormat raw;
+        surfaceFormat   raw;
+
+
+        writeControl    onEnd;
+
+
+        fields (T grad(T));
+
+
+        surfaces
+        {
+            // Oversized sampling - for general testing
+            patchSample
+            {
+                type      patch;
+                patches   (crysInter);
+            }
+        }
+    }
+
+    crucibleBot  // Arbitrary name
+    {
+        type    surfaces;
+        libs    (sampling);
+        log     true;
+
+
+        setFormat raw;
+        surfaceFormat   raw;
+
+
+        writeControl    onEnd;
+
+
+        fields (T grad(T));
+
+
+        surfaces
+        {
+            // Oversized sampling - for general testing
+            patchSample
+            {
+                type      patch;
+                patches   (crucibleBot);
+            }
+        }
+    }
+
+    crucibleSide  // Arbitrary name
+    {
+        type    surfaces;
+        libs    (sampling);
+        log     true;
+
+
+        setFormat raw;
+        surfaceFormat   raw;
+
+
+        writeControl    onEnd;
+
+        fields (T grad(T));
+
+
+        surfaces
+        {
+            // Oversized sampling - for general testing
+            patchSample
+            {
+                type      patch;
+                patches   (crucibleSide);
+            }
+        }
+    }
+
+
+    probes
+    {
+        type        probes;
+        libs ( "libsampling.so" );
+        enabled     true;
+        name        probes;
+        writeControl   timeStep;
+        writeInterval  1;
+        fixedLocations  false;
+        interpolationScheme  cellPoint;
+        probeLocations
+        (
+            ( 0.0 0.005 0.0 )
+            ( 0.02 0.005 0.0 )
+        );
+
+        fields ( 
+        U
+        T
+        ); 
+    }
+    fieldMinMax
+    {
+        type fieldMinMax;
+        libs ("libfieldFunctionObjects.so");
+        log no;
+        writeControl  timeStep;
+        writeInterval 1;
+        mode magnitude;
+        //region fluid;
+        fields
+        (
+            U
+            T
+        );
+    }
+    fieldAverage1
+    {
+        // Mandatory entries (unmodifiable)
+        type            fieldAverage;
+        libs            (fieldFunctionObjects);
+
+        // Mandatory entries (runtime modifiable)
+        fields
+        (
+            U
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        time;
+                windowType   approximate;
+                window       300.0;
+                windowName   avg300s;
+                allowRestart true;
+            }
+            T
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        time;
+                windowType   approximate;
+                window       300.0;
+                windowName   avg300s;
+                allowRestart true;
+            }
+        );
+
+        // Optional (inherited) entries
+        region          region0;
+        enabled         true;
+        log             true;
+        timeStart       0;
+        timeEnd         1000000;
+        executeControl  timeStep;
+        executeInterval 1;
+        writeControl    writeTime;
+        writeInterval   1;
+    }
+
+} // functions
+
+
+
+// ************************************************************************* //
+

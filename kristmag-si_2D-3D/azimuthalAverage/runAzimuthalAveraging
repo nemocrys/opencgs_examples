@@ -1,0 +1,41 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+. ${WM_PROJECT_DIR:?}/bin/tools/CleanFunctions      # Tutorial clean functions
+#------------------------------------------------------------------------------
+
+# Define folder variables
+AVG_DIR="simdata-2D-averaged"
+DIR2D="2D-case"
+DIR3D="3D-case"
+
+# Compile azimuthalAverage function
+wclean azimuthalAverage/
+wmake azimuthalAverage/
+
+# Clean the averaged case
+rm -rf log.*
+rm -rf "$AVG_DIR"
+cp -r case-averaged.orig "$AVG_DIR"
+
+# Set up 2D azimuthal averaged case
+cp -r "$DIR2D/constant/"* "$AVG_DIR/constant/."
+cp -r "$DIR2D/system/blockMeshDict" "$AVG_DIR/system/."
+cp -r "$DIR2D/system/changeDictionaryDict" "$AVG_DIR/system/."
+runApplication blockMesh -case "$AVG_DIR"
+
+# Set up 0 directory
+cp -r "$AVG_DIR/0.orig" "$AVG_DIR/0"
+runApplication changeDictionary -case "$AVG_DIR"
+
+# Copy 3D data from the final time step
+latestTime=$(foamListTimes -latestTime -case "$DIR3D" | tail -n 1)
+echo "Latest 3D time directory is $latestTime"
+cp -r $DIR3D/$latestTime/* $AVG_DIR/0/case3D/
+mkdir $AVG_DIR/constant/case3D
+cp -r $DIR3D/constant/* $AVG_DIR/constant/case3D/
+cp -r $DIR2D/system/fv* $AVG_DIR/system/case3D/.
+
+# Run azimuthal averaging
+./azimuthalAverage/azimuthalAverage -case "$AVG_DIR"
+runApplication icoFoam -case $AVG_DIR

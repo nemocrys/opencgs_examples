@@ -1,0 +1,69 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2112                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+boundary
+{
+    "(front|back)"
+    {
+        type            wedge;
+    }
+    defaultFaces
+    {
+        type    empty;
+    }
+    axis
+    {
+        type    empty;
+    }
+    "(crucibleBot|crucibleSide|freeSurf|crysInter)"
+    {
+        type            wall;
+    }
+}
+T
+{
+    internalField   uniform 1700;
+
+    boundaryField
+    {
+        
+        freeSurf
+        {
+            type            fixedGradient;
+            gradient           uniform 0; // will be replaced by elmerToFoamBC
+        }
+
+        crucibleBot
+        {
+            type            fixedValue;
+            gradient           uniform 0; // will be replaced by elmerToFoamBC
+        }
+
+        crucibleSide
+        {
+            type            fixedValue;
+            gradient           uniform 0; // will be replaced by elmerToFoamBC
+        }
+        
+        crysInter
+        {
+            type            fixedValue;
+            value           uniform 0; // will be replaced by elmerToFoamBC
+        }        
+    }
+}
+
+
+// ************************************************************************* //

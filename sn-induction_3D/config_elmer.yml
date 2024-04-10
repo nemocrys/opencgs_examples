@@ -1,0 +1,100 @@
+3D_steady:
+  Max Output Level: 4
+  Coordinate System: Cartesian
+  Simulation Type: Steady
+  Steady State Max Iterations: 1
+
+MGDynamics:
+  Equation: MGDynamics
+  Variable: AV[AV re:1 AV im:1]
+  Procedure: '"MagnetoDynamics" "WhitneyAVHarmonicSolver"'
+  Linear System Solver: Iterative
+  Linear System Preconditioning: ILU
+  Linear System Residual Output: 100
+  Linear System Max Iterations: 10000
+  Linear System Iterative Method: BiCGStabl
+  Linear System Convergence Tolerance: 1e-06
+  Linear System Robust: True
+  Linear System Abort Not Converged: False
+  BicgStabl Polynomial Degree: 8
+
+MGDynamicsCalc:
+  Equation: MGDynamicsCalc
+  Procedure: '"MagnetoDynamics" "MagnetoDynamicsCalcFields"'
+  Potential Variable: 'String "AV"'
+  Calculate Current Density: Logical True
+  Calculate Electric Field: Logical True
+  Calculate Magnetic Field Strength: Logical True
+  Calculate Joule Heating: True
+  Calculate Nodal Heating: True
+  Calculate JxB: Logical True
+  Steady State Convergence Tolerance: 1e-06
+  Calculate Nodal Fields: False
+  Calculate Elemental Fields: True
+  Linear System Solver: Iterative
+  Linear System Preconditioning: ILU0
+  Linear System Residual Output: 100
+  Linear System Max Iterations: 5000
+  Linear System Iterative Method: CG
+  Linear System Convergence Tolerance: 1e-08
+
+HeatSolver: 
+  Equation: Heat Equation
+  Procedure: '"HeatSolve" "HeatSolver"'
+  Variable: "Temperature"
+  Variable Dofs: 1
+  Calculate Loads: True
+  Exec Solver: Always
+  Nonlinear System Convergence Tolerance: 1e-06
+  Nonlinear System Max Iterations: 1000
+  Nonlinear System Relaxation Factor: 0.7
+  Steady State Convergence Tolerance: 1e-05
+  Stabilize: True
+  Optimize Bandwidth: True
+  Linear System Solver: Iterative
+  Linear System Iterative Method: Idrs
+  Linear System Max Iterations: 100000
+  Linear System Preconditioning: ILU
+  Linear System Precondition Recompute: 1
+  Linear System Convergence Tolerance: 1e-08
+  Linear System Abort Not Converged: True
+  Linear System Residual Output: 100
+  Smart Heater Control After Tolerance: 0.01
+  Gebhardt Factors Solver Iterative: True
+
+
+ResultOutputSolver:
+  Exec Solver: after saving
+  Equation: "ResultOutput"
+  Procedure: '"ResultOutputSolve" "ResultOutputSolver"'
+  Vtu Format: True
+  Vtu Part collection: True
+  Save Bulk Only: True
+  Output Directory: results
+  Output File name: case
+  # Scalar Field 1: '"Temperature"'
+  # Scalar Field 2: '"Heat Conductivity"'
+  # Scalar Field 3: '"Temperature Loads"'
+  # Scalar Field 4: '"Potential"'
+  # Scalar Field 5: '"Joule Heating"'
+  # Scalar Field 6: '"Magnetic Flux Density"'
+  # Scalar Field 7: '"Phase Surface"'
+  # Scalar Field 8: '"Mesh Update"'
+  # Scalar Field 9: '"Mesh Velocity"'
+
+CoilSolver:
+  Exec Solver: Before All
+  Equation: CoilSolver
+  Procedure: '"CoilSolver" "CoilSolver"'
+  Linear System Solver: Iterative
+  Linear System Direct Method: Umfpack
+  Linear System Preconditioning: ILU1
+  Linear System Max Iterations: 2000
+  Linear System Iterative Method: idrs
+  Linear System Convergence Tolerance: 1e-9
+  Linear System Residual Output: 20
+  Coil Closed: Logical False
+  Calculate Elemental Fields: True
+  Fix Input Current Density: True
+  Normalize Coil Current: True
+  Desired Coil Current: 100.0

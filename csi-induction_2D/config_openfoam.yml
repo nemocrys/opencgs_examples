@@ -1,0 +1,2 @@
+template_steady: ./openfoam_template_steady
+template_transient: ./openfoam_template_transient

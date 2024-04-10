@@ -1,0 +1,47 @@
+sim_name: exp-2022-06-23_slow-growth-tin_alu_01_T=233_eps-tin
+T_tp: 505
+r_min: 0.9e-3
+r_max: 20.0e-3
+dT_max: 0.1
+
+config_update:
+  materials:
+    # tin-solid:
+    #   Emissivity: 0.1  # according to paper sim-test-cz for oxidized crystal
+    tin-liquid:
+      Heat Conductivity: 62  # according to paper sim-test-cz
+  simulation:
+    general:
+      v_pull: 0.25
+    smart-heater:
+      # T: 505.65  # 232.5°C
+      T: 506.15  # 233°C
+      control-point: True
+    boundaries:
+      crystal:
+        htc: 0  # vacuum
+      crucible_outside:
+        htc: 0  # vacuum
+      melt:
+        htc: 0  # vacuum
+    heating_induction:
+      frequency: 16.6e+3  # Hz
+  geometry:
+    filling:
+      material: vacuum
+    crystal:
+      r: 2.5e-3
+      l: 0.085
+    seed:
+      r: 0.7e-3
+      l: 0.02
+    crucible:
+      material: aluminum
+
+study_params:
+  # geometry:
+  #   seed:
+  #     r: [0.7e-3, 0.8e-3, 0.9e-3]
+  materials:
+    tin-solid:
+      Emissivity: [0.05, 0.064, 0.1]

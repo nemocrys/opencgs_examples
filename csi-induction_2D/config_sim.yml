@@ -1,0 +1,84 @@
+# base configuration for simulation
+# don't make any changes here but use config_update in config.yml / config_di.yml
+
+general:
+  heat_control: True
+  heat_convection: True
+  heating_induction: True
+  phase_change: True
+  v_pull: 0.2  # mm/min
+
+boundaries:
+  afterheater:
+    htc: 0
+    T_ext: 293.15
+  crucible_outside:
+    htc: 4
+    T_ext: 293.15
+  crystal:
+    htc: 8
+    T_ext: 293.15
+  melt:
+    htc: 6
+    T_ext: 293.15
+  inductor:
+    T: 293.15
+  vessel_outside:
+    T: 293.15
+
+heating_induction:
+  frequency: 14.2e+3  # Hz
+  current: 100  # A
+
+smart-heater:
+  T: 900  # melting point CsI
+  control-point: False  # if False: use T at melt-crystal interface (triple point)
+  x: 0.035
+  y: 0.005
+  z: 0.0
+
+solver-update:
+#   global:
+#     Steady State Max Iterations: 3
+  all-solvers:
+      Linear System Iterative Method: Idrs
+    # Steady State Convergence Tolerance: 1.e-6
+    # Nonlinear System Convergence Tolerance: 1.0e-4
+    # Linear System Convergence Tolerance: 1.e-9
+  # other options: solver-heat, solver-statmag, solver-phase-change
+
+probes:
+  crc-bot: [0.0, -0.005]  # thermo couple
+  crc-side: [0.02625, 0.0225]  # thermo couples
+
+save_line_solver:
+  Exec Solver: 'After timestep'
+  Equation: '"SaveLine"'
+  Procedure: '"SaveData" "SaveLine"'
+  Filename: '"save_lines.dat"'
+  Output Directory: './results'
+  Variable 1: temperature
+  Variable 2: temperature grad 1
+  Variable 3: temperature grad 2
+
+FluxSolver:
+  Exec Solver: 'after timestep'
+  Equation: 'String "Flux Solver"'
+  Procedure: '"FluxSolver" "FluxSolver"'
+  Calculate Grad: 'Logical True'
+  Calculate Flux: 'Logical True'
+  Target Variable: 'String "Temperature"'
+  Flux Coefficient: 'String "Heat Conductivity"'
+  Linear System Solver: '"Iterative"'
+  Linear System Convergence Tolerance: 1.0e-8
+  Linear System Iterative Method: '"BiCGStab"'
+  Linear System Max Iterations: 500
+  Linear System Preconditioning: ILU
+  Linear System Residual Output: 0
+
+GmshInput:
+  Exec Solver: before simulation
+  Equation: GmshInput
+  Procedure: '"GmshOutputReader" "GmshOutputReader"'
+  Output Directory: "."
+  Filename: File "of_result.msh"

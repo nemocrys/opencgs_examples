@@ -1,0 +1,14 @@
+*.msh
+**/*simdata*/*
+**/.vscode/*
+*.pyc
+*.pvsm
+*.sif
+**/.ipynb_checkpoints/*
+*.dat
+*.names
+*.log
+*.egg-info
+plots_for_paper/
+plots_for_paper_bw/
+debug_*

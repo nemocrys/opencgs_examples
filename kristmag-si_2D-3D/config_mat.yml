@@ -1,0 +1,217 @@
+argon:  # unused, PVA values
+  Heat Conductivity: |
+    variable Temperature
+        real lua "0.001798897 + 5.88540566E-5 * tx[0] -2.2487515E-8 * tx[0]^2 + 4.92138816E-12 * tx[0]^3"
+  Heat Capacity: 1000
+  Density: 1
+  # Density: |  # ideal gas law, p=2000 Pa, M=40 kg/Mol
+  #   variable Temperature
+  #       real lua "2000 * 40 / tx[0] / 8.31446261815324"
+  Viscosity: |  # Pa s
+    variable Temperature
+        real lua "8.466e-6 + 5.365e-8 * tx[0] -8.682e-12 tx[0]^2"
+
+vacuum:
+  Heat Conductivity: 0
+  Heat Capacity: 0
+  Density: 0
+  Electric Conductivity: 0
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+quartz:  # Datasheet Heraeus, typical
+  Heat Conductivity: 2
+  Electric conductivity: 0
+  Emissivity: 0.8
+  Density: 2200
+  Heat Capacity: 1000
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+si-liquid:
+  Heat Conductivity: 62  # Hibiya2008, also set in config_geo.yml
+  Heat Capacity: 1004  # Hibiya2008
+  Emissivity: 0.2  # Takasuka1997
+  Density: 2560  # Hibiya2008, also set in config_geo.yml
+  # Wetting Angle: 11  # deg, Wünscher2011  # set in config_geo
+  # Surface Tension: 0.83  # N/m, Hibiya2010  # set in config_geo
+  Viscosity: 0.00057  # Pa*s, Hibiya2008
+  # Marangoni Coefficient:-0.00075  Hibiya2010
+  Electric Conductivity: 1390000  # Hibiya2008
+  Heat Capacity: 1004  # Hibiya2008
+  Liquid: 'Logical True'
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+si-solid:
+  Density: 2330  # Hibiya2008
+  Emissivity: |  # Table KD SiGrET Materialeigenschaften_v05.xlsx -> ?
+    Variable Temperature
+      Real
+        300  0.6394
+        400  0.6394
+        500  0.6394
+        600  0.6394
+        700  0.6394
+        800  0.6394
+        900  0.6394
+        1000  0.639522849
+        1100  0.613315134
+        1200  0.587107418
+        1300  0.560899703
+        1400  0.534691988
+        1500  0.508484273
+        1600  0.482276558
+        1680  0.461310386
+        1685  0.46
+      End
+  Heat Conductivity:  |  # Glassbrenner1964
+    Variable Temperature
+      Real
+        300  152.5491998
+        400  110.3130718
+        500  81.76241729
+        600  62.4628291
+        700  49.41674977
+        800  40.59789912
+        900  34.63655818
+        1000  30.60682833
+        1100  27.88282329
+        1200  26.04145831
+        1300  24.79673778
+        1400  23.95533523
+        1500  23.38656639
+        1600  23.00209169
+        1680  22.7863671
+        1685  22.77499781
+      End
+  Electric Conductivity:  |  # Fulkerson1968
+    Variable Temperature
+      Real
+        300  0.1
+        400  0.1
+        500  2.506109253
+        600  23.64104484
+        700  117.4511147
+        800  390.8408958
+        900  995.6601172
+        1000  2103.77844
+        1100  3879.879001
+        1200  6461.499772
+        1300  9948.766335
+        1400  14402.19117
+        1500  19845.71118
+        1600  26272.41526
+        1680  32101.3879
+        1685  32485.4156
+      End
+  Solid: 'Logical True'
+  Melting Point: 1685
+  Latent Heat: 1800000  # J/kg  # Hibiya2008
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+steel-1.4541:
+  Density: 7900.0  # 20°C
+  Electric Conductivity: 1.37e+6  # 20°C
+  Emissivity: 0.1  # 200°C
+  Heat Capacity:  470.0 # 20°C
+  Heat Conductivity: 15.0 # 20°C
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+graphite-FU8957: 
+  Density: 1750.0
+  Emissivity: 0.8  # assumed
+  Heat Capacity: 1237.0
+  Electric Conductivity: 7.14e+4
+  # Heat Conductivity: 90  # according to data sheet
+  # 19.87+7.129493e+01 + -5.120019e-02 * T^1 + 2.567860e-05 * T^2 + -4.400719e-09 * T^3
+  # Heat Conductivity:  |  # T-dependency from measurement + offset from data sheet (20)
+  #   Variable Temperature
+  #     Real
+  #       300 90
+  #       500  81
+  #       700  73.8
+  #       900  68.2
+  #       1100  64
+  #       1300  60.9
+  #       1500  58.9
+  #       1700  57.6
+  #     End
+  Heat Conductivity:  |  # Measurement EK98 Sample #4, #5, #6
+    Variable Temperature
+      Real
+        300    114.6
+        500    94.1
+        700    78.4
+        900    66.9
+        1100    58.6
+        1300    52.9
+        1500    48.8
+        1700    45.6
+      End
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+GFA-10:
+  # Heat Conductivity: |  # taken from PVA, verified with data sheets, 1bar Ar
+  #   Variable Temperature
+  #     Real
+  #       300  0.0838
+  #       600  0.146
+  #       900  0.2089
+  #       1200  0.2791
+  #       1300  0.3133
+  #       1500  0.4058
+  #       1700  0.5038
+  #       1867  0.5967
+  #     End
+  Heat Conductivity: |  # vacuum, SIGRATHERM wechwilz_d.pdf
+    Variable Temperature
+      Real
+        273.15  0.06
+        673.15  0.07
+        1073.15  0.1
+        1473.15  0.13
+        1873.15  0.21
+        2273.15  0.31
+      End
+  Emissivity: 0.8  # assumed
+  Density: 950  # taken from PVA, verified with data sheets
+  Heat Capacity: 1000  # taken from PVA, verified with data sheets
+  Electric Conductivity: 333   # 1.5 - 2.5 Ohm mm längs, 3-4 Ohm mm queer, SIGRATHERM weichfilz_d.pdf
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+CFC:
+  Heat Conductivity: 20  # between 5 and 40, Schunk Kohlenstofffaserverstaerkter-Kohlenstoff-CFC_03.pdf
+  Emissivity: 0.8  # assumed
+  Density: 1500
+  Heat Capacity: 1000
+  Electric Conductivity: 4.e+4  # 25 mm^2 Ohm / m
+  Relative Permeability: 1
+  Relative Permittivity: 1
+
+CBCF-15:  # 3-CALCARB-rigid-carbon-thermal-insulation-mersen_13.pdf
+  # Heat Conductivity:  |  # Argon
+  #   variable Temperature
+  #     Real
+  #       773.15  0.26
+  #       1273.15  0.40
+  #       2273.15  0.98
+  #     End
+  Heat Conductivity:  |  # Vacuum
+    variable Temperature
+      Real
+        773.15  0.18
+        1273.15  0.31
+        2273.15  0.83
+      End
+  Emissivity: 0.8  # assumed
+  Density: 150
+  Heat Capacity: 1000
+  Electric Conductivity: 200  # 25E-4 Ohm m parallel, 74E-4 Ohm m perpendicular
+  Relative Permeability: 1
+  Relative Permittivity: 1
+

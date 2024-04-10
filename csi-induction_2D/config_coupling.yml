@@ -1,0 +1,17 @@
+relaxation_factor: 0.5  # applied to changes in interface shape and heat fluxes
+flow_relaxation_factor: 0.5  # applied to changes in flow field
+maximum_iterations: 20
+tolerance_phase_interface: 1.e-4
+transient_flow: True
+# slowly ramping up  the flow velocity in the melt may increase
+# convergence (without there may be abrupt changes in interface shape)
+flow_scaling:
+    1: 1
+    # 2: 0.6
+    # 3: 0.8
+# increasing the heat conductivity of melt in the first iterations  
+# (where flow is not yet fully developed) may improve convergence
+heat_conductivity_scaling:
+    0: 2  # there is no flow yet, use a high effective conductivity
+    # 1: 2  # there is flow but scaled down (see flow_scaling)
+interface_number_of_points: 100

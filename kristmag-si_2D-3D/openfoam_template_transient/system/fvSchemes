@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         backward;
+}
+
+gradSchemes
+{
+    default         none;
+    grad(U)         Gauss skewCorrected linear;  // cellLimited Gauss linear 1 in case of bad mesh quality
+    grad(T)         Gauss skewCorrected linear;
+    grad(p_rgh)     Gauss skewCorrected linear;
+    grad(rhok)      Gauss skewCorrected linear;
+}
+
+divSchemes
+{
+    default         none;
+    // div(phi,U)      Gauss skewCorrected linear;
+    div(phi,U)      Gauss skewCorrected linearUpwind grad(U);
+    div(phi,T)      Gauss skewCorrected linear;
+    div((nuEff*dev2(T(grad(U))))) Gauss skewCorrected linear;
+    
+}
+
+laplacianSchemes
+{
+    default         none; //Gauss linear corrected;
+    laplacian(nuEff,U)      Gauss skewCorrected linear corrected;
+    laplacian(alphaEff,T)   Gauss skewCorrected linear corrected;
+    laplacian(rAUf,p_rgh)   Gauss skewCorrected linear corrected;
+}
+
+// interpolationSchemes
+// {
+//     default         none;
+//     flux(U)         linear;
+//     interpolate(rAU)  linear;
+//     interpolate(((alphaEff*Cp0)*rho0))  linear;
+//     dotInterpolate(S,U_0)  linear;
+//     flux(HbyA)      linear;
+// }
+
+snGradSchemes //corrected, faceCorrected, limited, linearFit, orthogonal, quadraticFit, uncorrected
+{
+    default         corrected;
+}
+
+
+// ************************************************************************* //

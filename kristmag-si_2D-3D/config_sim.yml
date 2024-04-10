@@ -1,0 +1,133 @@
+general:
+  heat_control: True
+  heat_convection: True
+  heating_resistance: True
+  phase_change: True
+  v_pull: 1  # mm/min
+
+boundaries:
+  # heater:
+  #   htc: 0
+  #   T_ext: 293.15
+  vessel_outside:
+    T: 293.15
+
+heating:
+  power_bot: 0
+  bower_side_bot: 5.e+3
+  power_side_mid: 11.8e+3
+  power_side_top: 12.5e+3
+
+kristmag_f1:
+  frequency: 200
+  side_top:
+    current_dty: 1.179e+5  # = 30 A *sqrt(2) / 3.6e-4 m^2
+    phase: 90  # deg
+  side_mid:
+    current_dty: 1.179e+5  # = 30 A *sqrt(2) / 3.6e-4 m^2
+    phase: 0  # deg
+  side_bot:
+    current_dty: 1.179e+5  # = 30 A *sqrt(2) / 3.6e-4 m^2
+    phase: -90  # deg
+  bot:
+    current_dty: 0  # = 0 A /  2.8e-4 m^2
+    phase: 0  # deg
+
+smart-heater:
+  T: 1685  # melting point Si
+  control-point: False  # if False: use T at melt-crystal interface (triple point)
+  # x: 0.035
+  # y: 0.005
+  # z: 0.0
+
+solver-update:
+  global:
+    # Steady State Max Iterations: 3
+    Output Intervals: 0
+  all-solvers:
+      Linear System Iterative Method: Idrs
+      Linear System Max Iterations: 100000
+      Linear System Residual Output: 10
+    # Steady State Convergence Tolerance: 1.e-6
+    # Nonlinear System Convergence Tolerance: 1.0e-4
+    # Linear System Convergence Tolerance: 1.e-9
+  # other options: solver-heat, solver-statmag, solver-phase-change
+
+probes:
+  probe1: [0, 0]  
+
+save_line_solver:
+  Exec Solver: 'After timestep'
+  Equation: '"SaveLine"'
+  Procedure: '"SaveData" "SaveLine"'
+  Filename: '"save_lines.dat"'
+  Output Directory: './results'
+  Variable 1: temperature
+  Variable 2: temperature grad 1
+  Variable 3: temperature grad 2
+
+save_scalars_solvers:
+  Exec Solver: 'After timestep'
+  Equation: '"SaveScalars"'
+  Procedure: '"SaveData" "SaveScalars"'
+  Filename: '"save_scalars.dat"'
+  Output Directory: './results'
+  Variable 1: temperature flux
+  Operator 1: boundary sum
+
+FluxSolver:
+  Exec Solver: 'after timestep'
+  Equation: 'String "Flux Solver"'
+  Procedure: '"FluxSolver" "FluxSolver"'
+  Calculate Grad: 'Logical True'
+  Calculate Flux: 'Logical True'
+  Target Variable: 'String "Temperature"'
+  Flux Coefficient: 'String "Heat Conductivity"'
+  Linear System Solver: '"Iterative"'
+  Linear System Convergence Tolerance: 1.0e-8
+  Linear System Iterative Method: '"BiCGStab"'
+  Linear System Max Iterations: 500
+  Linear System Preconditioning: ILU
+  Linear System Residual Output: 0
+
+GmshInput:
+  Exec Solver: before simulation
+  Equation: GmshInput
+  Procedure: '"GmshOutputReader" "GmshOutputReader"'
+  Output Directory: "."
+  Filename: File "of_result.msh"
+
+MagnetoDynamics2DHarmonic:
+  Equation: MgDyn2DHarmonic
+  Procedure: '"MagnetoDynamics2D" "MagnetoDynamics2DHarmonic"'
+  Variable: 'Potential[Potential Re:1 Potential Im:1]'
+  Variable Dofs: 2
+  Exec Solver: Always
+  Nonlinear System Convergence Tolerance: 1.0e-5
+  Nonlinear System Max Iterations: 1000
+  Nonlinear System Relaxation Factor: 0.7
+  Steady State Convergence Tolerance: 1.0e-6
+  Stabilize: True
+  Optimize Bandwidth: True
+  Linear System Solver: Iterative  
+  Linear System Iterative Method: BiCGStab
+  Linear System Max Iterations: 1000
+  Linear System Preconditioning: ILU
+  Linear System Precondition Recompute: 1
+  Linear System Convergence Tolerance: 1.0e-7
+  Linear System Abort Not Converged: True
+  Linear System Residual Output: 10
+
+MagnetoDynamicsCalcFields:
+  Equation: CalcFields
+  Procedure: '"MagnetoDynamics" "MagnetoDynamicsCalcFields"'
+  Potential Variable: Potential
+  Calculate Joule Heating: True
+  Calculate Magnetic Field Strength: True
+  Calculate Electric Field: True
+  Calculate Current Density: True
+  Calculate JxB: Logical True  
+  Exec Solver: Always
+  Calculate Nodal Fields: Logical True
+  Calculate Elemental Fields: Logical True
+  Linear System Residual Output: 10

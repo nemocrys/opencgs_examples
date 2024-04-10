@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+export OMPI_MCA_btl_vader_single_copy_mechanism=none
+
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+. ${WM_PROJECT_DIR:?}/bin/tools/CleanFunctions      # Tutorial clean functions
+#------------------------------------------------------------------------------
+cleanCase0
+rm -rf postProcessing
+rm -rf debugElmerToFoamBC
+rm -rf logs
+touch case.foam
+
+
+runApplication blockMesh
+runApplication rotateMesh "(0 0 1)" "(0 1 0)"
+restore0Dir
+runApplication checkMesh
+runApplication changeDictionary
+runApplication elmerToFoamBC
+runApplication decomposePar
+# runApplication $(getApplication)
+runParallel $(getApplication)
+runApplication reconstructPar -newTimes
+paraFoam -touch
+runApplication foamLog log.$(getApplication)
+python3 plotResiduals.py
+
+#------------------------------------------------------------------------------

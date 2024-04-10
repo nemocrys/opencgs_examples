@@ -1,0 +1,22 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+. ${WM_PROJECT_DIR:?}/bin/tools/CleanFunctions      # Tutorial clean functions
+#------------------------------------------------------------------------------
+cleanCase0
+rm -rf postProcessing
+rm -rf debugElmerToFoamBC
+rm -rf logs
+
+restore0Dir
+
+runApplication gmshToFoam mesh.msh
+runApplication checkMesh
+runApplication changeDictionary
+runApplication elmerToFoamBC
+runApplication $(getApplication)
+paraFoam -touch
+runApplication foamLog log.$(getApplication)
+python3 plotResiduals.py
+
+#------------------------------------------------------------------------------

@@ -1,0 +1,27 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2112                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "system";
+    object      azimuthalAverageDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// change variable acording to 3D field names
+U3DName     "UMean_avg300s"; // 3D velocity field for azimuthal averaging; default is "UMean"
+
+// these variables depend on case setup in runAzimuthalAverage
+case3DName  "case3D"; // regionName (not the name of the 3D case); default is "case3D"
+U3Dtime     "0"; // time directory with 3D data; is copied to 0 bei default; default is "0"
+U2DName     "U"; // 2D velocity field in current case; should be U in order to run; default is "U"
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

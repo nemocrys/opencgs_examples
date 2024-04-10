@@ -1,0 +1,222 @@
+sim_name: vac_half-insulation
+visualize: False
+
+# there are different configurations available:
+
+# vacuum, without insulation
+# config_update:
+#   materials:
+#     tin-liquid:
+#       Heat Conductivity: 62
+#   simulation:
+#     boundaries:
+#       crystal:
+#         htc: 0  # vacuum
+#       crucible_outside:
+#         htc: 0  # vacuum
+#       melt:
+#         htc: 0  # vacuum
+#       heater:
+#         htc: 0  # vacuum
+#     heating_resistance:
+#       power: 155  # vac, no insulaiton
+#   geometry:
+#     # without insulation
+#     insulation:
+#       side_h: 0.0
+#       top_t: 0.0
+#       bottom_t: 0.0
+#     crystal:
+#       r: 0.0005  # vacuum  (both)
+#       l: 0.04  # vacuum (both)
+
+# vacuum, half insulation
+# config_update:
+#   materials:
+#     tin-liquid:
+#       Heat Conductivity: 62
+#   simulation:
+#     boundaries:
+#       crystal:
+#         htc: 0  # vacuum
+#       crucible_outside:
+#         htc: 0  # vacuum
+#       melt:
+#         htc: 0  # vacuum
+#       heater:
+#         htc: 0  # vacuum
+#     heating_resistance:
+#       power: 143  # vac, half insulation
+#   geometry:
+#     # half insulation
+#     insulation:
+#       side_h: 0.07
+#       top_t: 0.0  # no top insulation
+#     crystal:
+#       r: 0.0005  # vacuum  (both)
+#       l: 0.04  # vacuum (both)
+
+# air, without insulation
+# config_update:
+#   materials:
+#     tin-solid:
+#       Emissivity: 0.1  # according to JCG 2022 paper
+#     tin-liquid:
+#       Heat Conductivity: 62
+#   simulation:
+#     boundaries:
+#       crystal:
+#         htc: 10  # air
+#       crucible_outside:
+#         htc: 9  # without insulation
+#       melt:
+#         htc: 9  # without insulation
+#       heater:
+#         htc: 9  # without insulation
+#     heating_resistance:
+#       power: 556  # without insulation air
+#   geometry:
+#     # without insulation
+#     insulation:
+#       side_h: 0.0
+#       top_t: 0.0
+#       bottom_t: 0.0
+#     crystal:
+#       r: 0.0038  # without insulation
+
+# air, half insulation
+# config_update:
+#   materials:
+#     tin-solid:
+#       Emissivity: 0.1  # according to JCG 2022 paper
+#     tin-liquid:
+#       Heat Conductivity: 62
+#   simulation:
+#     boundaries:
+#       crystal:
+#         htc: 10  # air
+#       crucible_outside:
+#         htc: 7  # half insulation
+#       melt:
+#         htc: 7  # half insulation
+#       heater:
+#         htc: 7  # half insulation
+#     heating_resistance:
+#       power: 454  # half insulation air
+#   geometry:
+#     # half insulation
+#     insulation:
+#       side_h: 0.07
+#       top_t: 0.0  # no top insulation
+#     crystal:
+#       r: 0.01085  # half insulation
+
+# air, full insulation
+config_update:
+  materials:
+    tin-solid:
+      Emissivity: 0.1  # according to JCG 2022 paper
+    tin-liquid:
+      Heat Conductivity: 62
+  simulation:
+    general:
+      v_pull: 4  # mm/min  # full insulation
+    boundaries:
+      crystal:
+        htc: 10  # air
+      crucible_outside:
+        htc: 2.5  # full insulation
+      melt:
+        htc: 2.5  # full insulation
+      heater:
+        htc: 2.5  # full insulation
+    heating_resistance:
+      power: 198  # full insulation air
+  geometry:
+    crystal:
+      r: 0.00475  # full insulation
+
+# # uncomment this for parameter study
+# study_params:
+#   geometry:
+#     mesh:
+#       size_factor: [0.5]
+#   simulation:
+#     boundaries:
+      # crucible_outside:
+      #   htc: 
+      #     - 0
+      #     - 2.5
+      #     - 5
+      #     - 7.5
+      #     - 10
+      #     - 12.5
+      #     - 15
+      # crystal:
+      #   htc: 
+      #     - 0
+      #     - 2.5
+      #     - 5
+      #     - 7.5
+      #     - 10
+      #     - 12.5
+      #     - 15
+      # melt:
+      #   htc: 
+      #     - 0
+      #     - 2.5
+      #     - 5
+      #     - 7.5
+      #     - 10
+      #     - 12.5
+      #     - 15
+      # heater:
+      #   htc: 
+      #     # - 0
+      #     # - 2.5
+      #     # - 5
+      #     # - 7.5
+      #     - 10
+      #     - 12.5
+      #     - 15
+  # materials:
+  #   graphite-CZ3R6300:
+  #     Emissivity:
+  #     - 0.5
+  #     - 0.6
+  #     - 0.7
+  #     - 0.8
+  #     - 0.9
+  #   graphite-FU8957:
+  #     Emissivity:
+  #     - 0.5
+  #     - 0.6
+  #     - 0.7
+  #     - 0.8
+  #     - 0.9
+  #   insulation:
+  #     Emissivity:
+  #     - 0.5
+  #     - 0.6
+  #     - 0.7
+  #     - 0.8
+  #     - 0.9
+  #   steel-1.4541:
+  #     Emissivity:
+  #     - 0.0
+  #     - 0.1
+  #     - 0.2
+  #     - 0.3
+  #     - 0.4
+  #   tin-liquid:
+  #     Emissivity:
+  #     - 0.0
+  #     - 0.064
+  #     - 0.164
+  #     - 0.264
+  #   tin-solid:
+  #     Emissivity:
+  #     - 0.0
+  #     - 0.064
+  #     - 0.164
+  #     - 0.264

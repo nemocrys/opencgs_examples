@@ -1,0 +1,57 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  plus                                  |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+transportModel Newtonian;
+
+// Silicon
+// Density                  2560 kg/m^3, Hibiya2008
+// dynamic viscosity mu     0.00056 kg/m/s, Hibiya2008
+// kinematic viscosity nu   2.23e-7 m^2/s, derived
+// thermal expansion        1.03e-4 1/K, Hibiya2008
+// specific heat capicity   1004 J/kg/K, Hibiya2008
+// heat conductivity        62 W/m/K, Hibiya2008
+// Pr = mu*cp/k = 
+
+// !!! SET DENSITY IN elmerToFoamDict FOR LORENTZ FORCE CALCULATION !!!
+
+// Laminar viscosity
+nu              2.23e-7;
+
+// Thermal expansion coefficient
+beta            1.03e-4;
+
+// Reference temperature
+TRef            1685.0;
+
+// Laminar Prandtl number  
+Pr              0.0091; 
+
+// Turbulent Prandtl number
+Prt             0.85;
+
+// // boron: D=1.8e-8
+// PrC1            PrC1 [0 0 0 0 0 0 0] 16.8;
+// PrtC1           PrtC1 [0 0 0 0 0 0 0] 0.85;
+
+// // phosphorus: D=3.9e-8
+// PrC2            PrC2 [0 0 0 0 0 0 0] 7.73;
+// PrtC2           PrtC2 [0 0 0 0 0 0 0] 0.85;
+
+// FLrho0          FLrho0 [1 -3 0 0 0 0 0] 2520;
+
+
+// ************************************************************************* //

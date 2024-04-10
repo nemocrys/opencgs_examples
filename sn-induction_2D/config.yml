@@ -1,0 +1,25 @@
+visualize: False
+
+# graphite crucible settings
+sim_name: graphite_crucible
+config_update:
+  simulation:
+    heating_induction:
+      frequency: 15.5e+3  # Hz - graphite crucible
+  geometry:
+    crystal:
+      r: 6.2e-3
+      l: 0.03
+
+# # aluminum crucible settings
+# sim_name: aluminum_crucible
+# config_update:
+#   simulation:
+#     heating_induction:
+#       frequency: 16.6e+3  # Hz - aluminum crucible
+#   geometry:
+#     crystal:
+#       r: 2.45e-3
+#       l: 0.03
+#     crucible:
+#       material: aluminum

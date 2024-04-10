@@ -1,0 +1,75 @@
+# Base configuration of test cz geometry
+mesh:
+  size_factor: 2
+  order: 2
+
+axis_bt:
+  r_in: 0.0075  # measured
+  r_out: 0.02  # measured
+  h: 0.036 # variable
+  T_init: 323.15
+  material: steel-1.4541
+axis_top:
+  r: 0.01  # measured
+  T_init: 303.15
+  material: steel-1.4541
+crucible:
+  h: 0.07 # 0.11  # drawing
+  r_in: 0.025  # drawing
+  r_out: 0.035  # drawing
+  t_bt: 0.05 # 0.09  # drawing
+  T_init: 520
+  material: graphite-CZ3R6300
+crucible_adapter:
+  r_in_top: 0.01  # drawing
+  r_in_bt: 0.02  # drawing
+  r_out: 0.035  # drawing
+  h_top: 0.0045  # drawing
+  h_bt: 0.015  # drawing
+  T_init: 313.15
+  material: graphite-CZ3R6300
+crystal:
+  l: 0.1  # variable
+  r_top: 0.0015
+  r: 0.004  # variable
+  T_init: 490
+  material: tin-solid
+heater:
+  h: 0.1  # drawing
+  t: 0.004  # drawing
+  r_in: 0.055  # drawing
+  h_over_floor: 0.03  # CAD
+  material: graphite-FU8957
+crucible_insulation:
+  r_in: 0.01  # drawing
+  r_out: 0.035  # drawing
+  h: 0.025  # drawing
+  T_init: 450
+  material: insulation
+insulation:
+  bottom_r_in: 0.025  # CAD
+  bottom_t: 0.02  # CAD
+  side_h: 0.14  # CAD
+  side_r_in: 0.079  # CAD
+  side_t: 0.025  # CAD
+  top_r_in: 0.025  # CAD
+  top_t: 0.02  # CAD
+  T_init: 400
+  material: insulation
+melt:
+  h: 0.01  # variable
+  T_init: 506
+  material: tin-liquid
+seed:
+  r: 0.0009  # estimated
+  l: 0.04  # estimated
+  T_init: 420
+  material: tin-solid
+vessel:
+  r_in: 0.1315
+  h_in: 0.383
+  t: 0.005
+  T_init: 293.15
+  material: steel-1.4541
+
+# phase_if: [[0, 0.034], [0.002, 0.03], [0.004, 0.034]]

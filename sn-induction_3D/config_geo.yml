@@ -1,0 +1,195 @@
+# Base configuration of test cz geometry
+mesh:
+  size_factor: 1.5
+  order: 1
+  dimension: 3
+  optimize: Netgen
+
+axis_bt:
+  r_in: 0.0075  # measured
+  r_out: 0.02  # measured
+  h: 0.029 # variable
+  T_init: 323.15
+  material: steel-1.4541
+  char_l: 0.005
+axis_top:
+  r: 0.01  # measured
+  T_init: 303.15
+  material: steel-1.4541
+  char_l: 0.007
+crucible:
+  h: 0.05  # drawing
+  r_in: 0.05  # drawing
+  r_out: 0.06  # drawing
+  t_bt: 0.01  # drawing
+  T_init: 520
+  # material: graphite-CZ3R6300
+  char_l: 0.005
+crucible_adapter:
+  r_in_top: 0.01  # drawing
+  r_in_bt: 0.02  # drawing
+  r_out: 0.035  # drawing
+  h_top: 0.0045  # drawing
+  h_bt: 0.015  # drawing
+  T_init: 313.15
+  material: graphite-CZ3R6300
+  char_l: 0.007
+crystal:
+  # l: 0.1  # variable
+  # r: 0.004  # variable
+  T_init: 490
+  material: tin-solid
+  char_l: 0.002
+filling:
+  T_init: 353.15
+  material: vacuum
+  char_l: 0.1
+# inductor:
+#   d: 0.01  # construction
+#   d_in: 0.008  # construction
+#   g: 0.006  # averaged
+#   n: 3
+#   X0: [0.075, -0.005]  # measured
+#   T_init: 293.15
+#   material: copper
+inductor_parametric:
+  d: 0.01
+  distance: 0.01
+  windings: 3
+  outerradius: 0.075
+  lenght: 0.064
+  n_points : 100
+  T_init: 293.15
+  material: copper-inductor
+  bounding_radius : 0.16 # 0.1365
+  entry_position : -0.015
+  geo_offset : 0.010
+  radius_coil : 0.075
+  radius_pipe : 0.005
+  char_l: 0.003
+inductor_measurement_calliper:  # Z:\Gruppen\nemocrys\Private\Equipment\Test_CZ\2022-10-11_Spulengeometrie
+  T_init: 293.15
+  material: copper-inductor
+  radius_pipe: 0.005
+  char_l: 0.002
+  spline_points: [  # coil center points using cylindrical coordinates [r, phi, h]
+    [0.2, 0, 0.03075],
+    [0.1315, 0, 0.03075],
+    [0.092, 0, 0.03075],
+    [0.091, 0, 0.03075],
+    [0.090, 0, 0.03075],
+    [0.075, 15, 0.0597],
+    [0.075, 16, 0.059846666],  # manually inserted points to get better spline quality
+    [0.075, 17, 0.059993333],  # manually inserted points to get better spline quality
+    # [0.075, 30, 0.0619],  # only use half of the measured values to get smoother spline
+    [0.075, 45, 0.065],
+    # [0.075, 60, 0.0685],
+    [0.075, 75, 0.0712],
+    # [0.075, 90, 0.0737],
+    [0.075, 105, 0.0738],
+    # [0.075, 120, 0.0739],
+    [0.075, 135, 0.0723],
+    # [0.075, 150, 0.0704],
+    [0.075, 165, 0.0679],
+    # [0.075, 180, 0.0665],
+    [0.075, 195, 0.0639],
+    # [0.075, 210, 0.0621],
+    [0.075, 225, 0.0611],
+    # [0.075, 240, 0.0604],
+    [0.075, 255, 0.0605],
+    # [0.075, 270, 0.0610],
+    [0.075, 285, 0.0619],
+    # [0.075, 300, 0.0642],
+    [0.075, 315, 0.0663],
+    # [0.075, 330, 0.0687],
+    [0.075, 345, 0.0718],
+    # [0.075, 360, 0.0748],
+    [0.075, 15, 0.0790],
+    # [0.075, 30, 0.0820],
+    [0.075, 45, 0.0845],
+    # [0.075, 60, 0.0871],
+    [0.075, 75, 0.0890],
+    # [0.075, 90, 0.0908],
+    [0.075, 105, 0.0905],
+    # [0.075, 120, 0.0907],
+    [0.075, 135, 0.0898],
+    # [0.075, 150, 0.0887],
+    [0.075, 165, 0.0872],
+    # [0.075, 180, 0.0865],
+    [0.075, 195, 0.0843],
+    # [0.075, 210, 0.0825],
+    [0.075, 225, 0.0810],
+    # [0.075, 240, 0.0796],
+    [0.075, 255, 0.0791],
+    # [0.075, 270, 0.0792],
+    [0.075, 285, 0.0796],
+    # [0.075, 300, 0.0816],
+    [0.075, 315, 0.0838],
+    # [0.075, 330, 0.0863],
+    [0.075, 345, 0.0896],
+    # [0.075, 360, 0.0927],
+    [0.075, 15, 0.0969],
+    # [0.075, 30, 0.0996],
+    [0.075, 45, 0.1024],
+    # [0.075, 60, 0.1053],
+    [0.075, 75, 0.1073],
+    # [0.075, 90, 0.1092],
+    [0.075, 105, 0.1089],
+    # [0.075, 120, 0.1091],
+    [0.075, 135, 0.1080],
+    # [0.075, 150, 0.1067],
+    [0.075, 165, 0.1048],
+    # [0.075, 180, 0.1038],
+    [0.075, 195, 0.1013],
+    # [0.075, 210, 0.0999],
+    [0.075, 225, 0.0985],
+    # [0.075, 240, 0.0978],
+    [0.075, 255, 0.0978],
+    # [0.075, 270, 0.0983],
+    [0.075, 285, 0.0995],
+    # [0.075, 300, 0.1019],
+    [0.075, 315, 0.1047],
+    # [0.075, 330, 0.1075],
+    [0.075, 343, 0.10966666],  # manually inserted points to get better spline quality
+    [0.075, 344, 0.10983333],  # manually inserted points to get better spline quality
+    [0.075, 345, 0.1100],
+    [0.09, 360, 0.13315],
+    [0.091, 360, 0.13315],
+    [0.092, 360, 0.13315],
+    [0.1315, 360, 0.13315],
+    [0.2, 360, 0.13315],
+  ]
+insulation:
+  r_in: 0.01  # drawing
+  r_out: 0.06  # drawing
+  h: 0.025  # drawing
+  T_init: 450
+  material: insulation
+  char_l: 0.005
+melt:
+  h: 0.03  # variable
+  T_init: 506
+  material: tin-liquid
+  char_l: 0.005
+seed:
+  r: 0.0009  # estimated
+  l: 0.04  # estimated
+  T_init: 420
+  material: tin-solid
+  char_l: 0.0009
+vessel:
+  r_in: 0.1315
+  h_in: 0.383
+  t: 0.005
+  T_init: 293.15
+  material: steel-1.4541
+  char_l: 0.01
+# helper boundaries for cutting of coil ends
+surrounding_temp:
+  X0: [0, -0.5]
+  r: 0.1365
+  h: 1
+cutbox:
+  X0: [0, -0.5]
+  r: 0.3
+  h: 1

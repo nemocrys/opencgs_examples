@@ -1,0 +1,14 @@
+relaxation_factor: 0.7
+flow_relaxation_factor: 0.7
+maximum_iterations: 20
+tolerance_phase_interface: 1.e-4
+transient_flow: True
+flow_scaling:
+    1: 0.33
+    2: 0.66
+    # 3: 0.8
+heat_conductivity_scaling:   # not implemented yet
+    0: 1  # there is no flow yet, use a high effective conductivity
+    # 1: 1.5  # there is flow but scaled down (see flow_scaling)
+interface_number_of_points: 100
+OpenFOAM_3D: True

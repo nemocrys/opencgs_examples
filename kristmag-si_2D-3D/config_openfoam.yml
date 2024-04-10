@@ -1,0 +1,3 @@
+template_steady: ./openfoam_template_steady
+template_transient: ./openfoam_template_transient
+template_3D: ./openfoam_template_transient_3D
