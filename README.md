@@ -29,7 +29,7 @@ The setup for the simulations is provided in form of a docker image, so just an 
 
 On Windows, the container can be started with the following command:
 ```
-docker run --rm -v ${PWD}:/home/workdir nemocrys/opencgs:v1.0.0 bas
+docker run -it --rm -v ${PWD}:/home/workdir nemocrys/opencgs:v1.0.0 bash
 ```
 On Linux, the container can be started with:
 ```

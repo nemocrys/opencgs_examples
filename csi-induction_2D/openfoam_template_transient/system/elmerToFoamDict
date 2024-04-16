@@ -39,3 +39,15 @@ boundary
     crucibleSide	"save_line_crc_melt_relaxed.dat";
     crucibleBot	    "save_line_crc_melt_relaxed.dat";
 }
+
+// Lorentz force (no rotation yet)
+FLmap           0; // flag for reading
+QJmap           0; // flag for reading
+FLfile          "lorentz-force.csv"; // filename
+coordColumn     3; // column with x coordinate (careful, no permutation is implemented yet)
+heatColumn      6; // column with joule heat
+QJcoef          1; // scaling factor for Teqn -> QJcoef*QJ/Qrhocp_
+forceColumn     10; // column with Fx
+FLcoef          1; // scaling factor for Ueqn -> Flcoef/FLrho0*FL
+FLrho0          FLrho0 [1 -3 0 0 0 0 0] 6980; 
+Qrhocp          Qrhocp [1 -1 -2 -1 0 0 0] 1.764e6;
