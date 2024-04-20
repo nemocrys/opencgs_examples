@@ -1,5 +1,5 @@
 # sim-kristmag-si
-2D-2D or 2D-3D simulation of silicon Czochralski growth using a TMF based on the KristMAG technology. Azimuthal averaging with [azimuthalAverage](azimuthalAverage) is based on TODO *add reference*.
+2D-2D or 2D-3D simulation of silicon Czochralski growth using a TMF based on the KristMAG technology. Azimuthal averaging with [azimuthalAverage](azimuthalAverage) is based on the code provided in [nemoFoam-utils](https://github.com/nemocrys/nemoFoam-utils).
 
 ## Overview
 

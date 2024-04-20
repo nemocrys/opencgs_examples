@@ -5,9 +5,9 @@ Collection of crystal growth simulations using [opencgs](https://github.com/nemo
 The project is developed and maintained by the [**Model experiments group**](https://www.ikz-berlin.de/en/research/materials-science/section-fundamental-description#c486) at the Leibniz Institute for Crystal Growth (IKZ).
 
 ### Referencing
-If you use this code in your research, please cite the reference provided in the respective directory or this open-access article:
+If you use this code in your research, please cite the reference provided in the respective directory or this general reference:
 
-> A. Enders-Seidlitz, J. Pal, and K. Dadzis, Development and validation of a thermal simulation for the Czochralski crystal growth process using model experiments *Journal of Crystal Growth*,  593 (2022) 126750. [https://doi.org/10.1016/j.jcrysgro.2022.126750](https://doi.org/10.1016/j.jcrysgro.2022.126750).
+> A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
 
 ## Overview
 This repository contains various 2D and 2D models of Czochralski crystal growth using [Elmer](http://www.elmerfem.org/blog/) and [OpenFOAM](https://www.openfoam.com/).
@@ -41,6 +41,9 @@ This will map the current working directory (e.g., a copy of this repository) in
 ## Model description
 
 *Add description or reference here*
+A coupled model consisting of a global time-harmonic electromagnetism, steady-state phase change and heat transfer model in [Elmer](http://www.elmerfem.org/) coupled with a local transient or steady-state melt flow model in [OpenFOAM](https://www.openfoam.com/). Both 2D and 3D modeling can be applied.
+
+A detailed description can be found in the reference provided above.
 
 ## Acknowledgements
 
