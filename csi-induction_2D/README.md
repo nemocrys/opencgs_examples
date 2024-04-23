@@ -3,7 +3,9 @@
 
 ## Overview
 
-*figure or setup here*
+An overview of the simulation setup can be found [here](figures/setup.pdf). The following result was obtained for a crystal length of 87mm:
+
+![result-2D-simulation](figures/temperature-meltflow_l=87mm.png)
 
 ## Configuration, setup, and execution
 

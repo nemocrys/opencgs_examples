@@ -3,7 +3,9 @@
 
 ## Overview
 
-*figure or setup here*
+An overview of the simulation setup can be found [here](figures/setup.pdf). The following result was obtained with full insulation:
+
+![result-2D-simulation](figures/temperature-distribution_full-ins.png)
 
 ## Configuration, setup, and execution
 

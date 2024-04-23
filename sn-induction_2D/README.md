@@ -3,7 +3,9 @@
 
 ## Overview
 
-*figure or setup here*
+An overview of the simulation setup can be found [here](https://camo.githubusercontent.com/c0b28a2c445645c2045e898809f38f6a29eb8656abb430bd06d42fff57a1543a/68747470733a2f2f6172732e656c732d63646e2e636f6d2f636f6e74656e742f696d6167652f312d73322e302d53303032323032343832323030323338582d6772325f6c72672e6a7067). The following result was obtained using a graphite crucible:
+
+![result-2D-simulation](figures/evaluation-2D_graphite_x2.png)
 
 ## Configuration, setup, and execution
 

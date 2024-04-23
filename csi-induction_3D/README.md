@@ -3,7 +3,12 @@
 
 ## Overview
 
-*figure or setup here*
+An overview of the simulation setup can be found [here](../csi-induction_2D/figures/setup.pdf).  With the 3D model, the following result was obtained after a single coupling iteration:
+
+![result-3D-simulation-T-EM](figures/l=87mm_T-control.png)
+
+![result-3D-simulation-flow](figures/l=87mm_flow.png)
+
 
 ## Configuration, setup, and execution
 

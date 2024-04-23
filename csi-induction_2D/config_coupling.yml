@@ -2,7 +2,7 @@ relaxation_factor: 0.5  # applied to changes in interface shape and heat fluxes
 flow_relaxation_factor: 0.5  # applied to changes in flow field
 maximum_iterations: 20
 tolerance_phase_interface: 1.e-4
-transient_flow: True
+transient_flow: False
 # slowly ramping up  the flow velocity in the melt may increase
 # convergence (without there may be abrupt changes in interface shape)
 flow_scaling:
