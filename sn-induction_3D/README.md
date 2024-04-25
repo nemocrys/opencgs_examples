@@ -23,7 +23,9 @@ This model is based on the 2D model provided [here](../sn-induction_2D).
 - The simulation is executed in the following way:
   - The global model is executed with Python using [setup_run_elmer.py](setup_run_elmer.py).
   - The flow model is executed using the `Allrun` script.
-- Feedback from the flow model to the global model is possible, but not implemented in an automatized way. Manual coupling by modifying the Elmer sif-file was performed in REFERENCE.
+- Feedback from the flow model to the global model is possible, but not implemented in an automatized way. Manual coupling by modifying the Elmer sif-file was performed in the reference.
+
+It should be noted that mesh generation for the global 3D model requires a significant amount of memory and was performed on a simulation cluster for the example shown above.
 
 ## Referencing
 If you use this code in your research, please cite our open-access article:
