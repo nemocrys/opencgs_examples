@@ -25,15 +25,15 @@ Additional examples can be found here:
 
 ## Computational setup (Docker)
 
-The setup for the simulations is provided in form of a docker image, so just an installation of [Docker](https://docs.docker.com/get-docker/) is required on your system. The image nemocrys/opencgs:v1.0.0 is used (see [opencgs](https://github.com/nemocrys/opencgs) for more information).
+The setup for the simulations is provided in form of a docker image, so just an installation of [Docker](https://docs.docker.com/get-docker/) is required on your system. The image nemocrys/opencgs:v1.0.1 is used (see [opencgs](https://github.com/nemocrys/opencgs) for more information).
 
 On Windows, the container can be started with the following command:
 ```
-docker run -it --rm -v ${PWD}:/home/workdir nemocrys/opencgs:v1.0.0 bash
+docker run -it --rm -v ${PWD}:/home/workdir nemocrys/opencgs:v1.0.1 bash
 ```
 On Linux, the container can be started with:
 ```
-docker run -it --rm -v $PWD:/home/workdir -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) nemocrys/opencgs:v1.0.0 bash
+docker run -it --rm -v $PWD:/home/workdir -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) nemocrys/opencgs:v1.0.1 bash
 ```
 
 This will map the current working directory (e.g., a copy of this repository) into the container and, on Linux, set the user's group and user id. The simulation can then be executed using the provided `python3` or `Allrun`scripts.
