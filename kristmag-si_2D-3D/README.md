@@ -28,8 +28,8 @@ The corresponding flow veloctiy and temperature fields (left: snapshot, right: t
   - Simulations using the coupled Elmer-OpenFOAM model only are executed with the [run_coupled_simulation.py](run_coupled_simulation.py) script.
 
 ## Referencing
-If you use this code in your research, please cite our open-access article:
+If you use this code in your research, please cite:
 
-> A. Enders-Seidlitz, J. Pal, and K. Dadzis, Development and validation of a thermal simulation for the Czochralski crystal growth process using model experiments *Journal of Crystal Growth*,  593 (2022) 126750. [https://doi.org/10.1016/j.jcrysgro.2022.126750](https://doi.org/10.1016/j.jcrysgro.2022.126750).
+> A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
 
 **Note: this reference will be updated soon**
