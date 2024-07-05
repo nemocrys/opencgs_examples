@@ -2,7 +2,7 @@
 
 Collection of crystal growth simulations using [opencgs](https://github.com/nemocrys/opencgs).
 
-The project is developed and maintained by the **Model experiments group** at the Leibniz Institute for Crystal Growth (IKZ). Contact Dr. Kaspars Dadzis for questions or further details.
+The project is developed and maintained by the [**Model experiments group**](https://www.ikz-berlin.de/en/research/materials-science/section-fundamental-description#c488) at the Leibniz Institute for Crystal Growth (IKZ). Contact Dr. Kaspars Dadzis for questions or further details.
 
 ### Referencing
 If you use this code in your research, please cite our open-access publication:
@@ -44,7 +44,6 @@ This will map the current working directory (e.g., a copy of this repository) in
 
 ## Model description
 
-*Add description or reference here*
 A coupled model consisting of a global time-harmonic electromagnetism, steady-state phase change and heat transfer model in [Elmer](http://www.elmerfem.org/) coupled with a local transient or steady-state melt flow model in [OpenFOAM](https://www.openfoam.com/). Both 2D and 3D modeling can be applied.
 
 A detailed description can be found in the reference provided above.
