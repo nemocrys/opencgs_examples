@@ -23,9 +23,8 @@ An overview of the simulation setup can be found [here](https://camo.githubuserc
   - Simulations using the global Elmer model only are executed with the [run_elmer_simulation.py](run_elmer_simulation.py) script.
   - Simulations using the coupled Elmer-OpenFOAM model only are executed with the [run_coupled_simulation.py](run_coupled_simulation.py) script.
 
-## Referencing
-If you use this code in your research, please cite:
+## Additional details
+
+For a more detailed description including simulation results see:
 
 > A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
-
-**Note: this reference will be updated soon**

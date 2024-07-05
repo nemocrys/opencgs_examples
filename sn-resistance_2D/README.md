@@ -3,7 +3,7 @@
 
 ## Overview
 
-An overview of the simulation setup can be found [here](figures/setup.pdf). The following result was obtained with full insulation:
+An overview of the simulation setup can be found [here](figures/setup.png). The following result was obtained with full insulation:
 
 ![result-2D-simulation](figures/temperature-distribution_full-ins.png)
 
@@ -17,9 +17,8 @@ An overview of the simulation setup can be found [here](figures/setup.pdf). The 
 - The mesh of the global model is set up in [setup.py](setup.py), which contains also the setup of the global simulation.
 - The simulation is executed using the [run.py](run.py) script.
 
-## Referencing
-If you use this code in your research, please cite:
+## Additional details
+
+For a more detailed description including simulation results see:
 
 > A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
-
-**Note: this reference will be updated soon**

@@ -3,7 +3,7 @@
 
 ## Overview
 
-An overview of the simulation setup can be found [here](../csi-induction_2D/figures/setup.pdf).  With the 3D model, the following result was obtained after a single coupling iteration:
+An overview of the simulation setup can be found [here](../csi-induction_2D/figures/setup.png).  With the 3D model, the following result was obtained after a single coupling iteration:
 
 ![result-3D-simulation-T-EM](figures/l=87mm_T-control.png)
 
@@ -29,9 +29,8 @@ This model is based on the 2D model provided [here](../csi-induction_2D).
 
 It should be noted that mesh generation for the global 3D model requires a significant amount of memory and was performed on a simulation cluster for the example shown above.
 
-## Referencing
-If you use this code in your research, please cite:
+## Additional details
+
+For a more detailed description including simulation results see:
 
 > A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
-
-**Note: this reference will be updated soon**

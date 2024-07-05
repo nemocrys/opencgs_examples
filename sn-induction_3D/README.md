@@ -27,9 +27,8 @@ This model is based on the 2D model provided [here](../sn-induction_2D).
 
 It should be noted that mesh generation for the global 3D model requires a significant amount of memory and was performed on a simulation cluster for the example shown above.
 
-## Referencing
-If you use this code in your research, please cite:
+## Additional details
+
+For a more detailed description including simulation results see:
 
 > A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
-
-**Note: this reference will be updated soon**
