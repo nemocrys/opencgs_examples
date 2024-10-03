@@ -1,5 +1,7 @@
 # opencgs_examples
 
+[![DOI](https://zenodo.org/badge/784676303.svg)](https://doi.org/10.5281/zenodo.13887487)
+
 Collection of crystal growth simulations using [opencgs](https://github.com/nemocrys/opencgs).
 
 The project is developed and maintained by the [**Model experiments group**](https://www.ikz-berlin.de/en/research/materials-science/section-fundamental-description#c488) at the Leibniz Institute for Crystal Growth (IKZ). Contact Dr. Kaspars Dadzis for questions or further details.
