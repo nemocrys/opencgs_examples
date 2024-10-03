@@ -11,7 +11,7 @@ If you use this code in your research, please cite our open-access publication:
 
 Further details can be found in:
 
-> A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
+> A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024. [https://doi.org/10.14279/depositonce-20957](https://doi.org/10.14279/depositonce-20957)
 
 ## Overview
 This repository contains various 2D and 2D models of Czochralski crystal growth using [Elmer](http://www.elmerfem.org/blog/) and [OpenFOAM](https://www.openfoam.com/).
