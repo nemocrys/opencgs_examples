@@ -25,6 +25,10 @@ This repository contains various 2D and 2D models of Czochralski crystal growth 
 - [sn-induction_3D](sn-induction_3D): 3D simulation of Sn Czochralski growth with induction heating
 - [sn-resistance_2D](sn-resistance_2D): 2D simulation of Sn Czochralski growth with resistance
 
+Further examples for heating tests without the growth process:
+- [sn-induction-test_2D](sn-induction-test_2D): 2D simulation of a test with induction heating
+- [sn-resistance-test_2D](sn-resistance-test_2D): 2D simulation of a test with resistance heating
+
 Additional examples can be found here:
 - [2D simulation of Sn Czochralski growth with induction heating](https://github.com/nemocrys/test-cz-induction)
 - [2D simulation of GaAs vertical gradient freeze](https://github.com/nemocrys/vertical-gradient-freeze)
