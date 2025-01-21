@@ -1,0 +1,11 @@
+boundary-scalars:
+  Exec Solver: 'after saving'
+  Equation: SaveScalars
+  Procedure: '"SaveData" "SaveScalars"'
+  Filename: '"boundary-scalars.dat"'
+  Output Directory: './results'
+  Operator 1: 'boundary sum'
+  Variable 1: 'Temperature Loads'
+  Operator 2: 'diffusive flux'
+  Variable 2: Temperature
+  Coefficient 2: 'Heat Conductivity'

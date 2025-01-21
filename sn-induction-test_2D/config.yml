@@ -1,0 +1,27 @@
+sim_name: 1000degC_vacuum_highres
+visualize: False
+
+config_update:
+  simulation:
+    boundaries:
+      crucible_outside:
+        htc: 0  # vacuum
+    heating_induction:
+      solver: mgdyn
+    #   # frequency: 16.6e+3  # Hz - aluminum crucible
+    #   frequency: 15.5e+3  # Hz - graphite crucible
+    smart-heater:
+      T: 1273.15
+  geometry:
+    mesh:
+      size_factor: 0.5
+    filling:
+      material: vacuum
+
+# study_params:
+#   materials:
+#     graphite-CZ3R6300:
+#       Electric Conductivity: [ 1.e+4, 5.e+4, 1.e+5, 5.e+5, 1.e+6]
+#   simulation:
+#     smart-heater:
+#       T: [1273.15, 1173.15, 1073.15, 973.15, 873.15, 773.15, 673.15, 573.15, 473.15,]

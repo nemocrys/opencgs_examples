@@ -1,0 +1,93 @@
+general:
+  heat_control: True
+  heat_convection: True
+  heating_resistance: True
+  phase_change: False
+  v_pull: 1  # mm/min
+
+boundaries:
+  crucible_outside:
+    htc: 1
+    T_ext: 293.15
+  crystal:
+    htc: 10
+    T_ext: 293.15
+  melt:
+    htc: 1
+    T_ext: 293.15
+  heater:
+    htc: 1
+    T_ext: 293.15
+  vessel_outside:
+    T: 293.15
+
+heating_resistance:
+  power: 149
+
+smart-heater:
+  T: 505  # melting point tin
+  control-point: True  # if False: use T at melt-crystal interface (triple point)
+  x: 0.03   # TE in crucible
+  y: 0.0
+  z: 0.0
+
+solver-update:
+#   global:
+#     Steady State Max Iterations: 3
+  all-solvers:
+      Linear System Iterative Method: Idrs
+    # Steady State Convergence Tolerance: 1.e-6
+    # Nonlinear System Convergence Tolerance: 1.0e-4
+    # Linear System Convergence Tolerance: 1.e-9
+  # other options: solver-heat, solver-statmag, solver-phase-change
+
+probes:
+  crc-wall: [0.03, 0]  # Pt100, thermocouples
+  # crc-wall+2: [0.3, 0.02]
+  # crc-wall+1: [0.3, 0.01]
+  # crc-wall-1: [0.3, -0.01]
+  # crc-wall-2: [0.3, -0.02]
+  # crc-bt: [0.0, -0.05]
+  # heater-bt: [0.057, -0.0855]
+  # heater-bt+1: [0.057, -0.0755]
+  # heater-bt+2: [0.057, -0.0655]
+  # heater-bt+3: [0.057, -0.0555]
+  # heater-bt+4: [0.057, -0.0455]
+  # heater-cntr: [0.057, -0.0355]
+  # heater-bt+6: [0.057, -0.0255]
+  # heater-bt+7: [0.057, -0.0155]
+  # heater-bt+8: [0.057, -0.0055]
+  # heater-bt+9: [0.057, -0.0045]
+  # heater-top: [0.057, 0.0145]
+  melt-side: [0.018, 0.002]  # Thermocouple through crucible into melt
+  melt-control: [0.015, 0.005]  # Temperature control Pt100 / thermocouple
+  # base setup: height of meniscus (y-coordinate): 0.01363932
+  # p1_crys_in: [0, 0.03863932]  # base setup: center of crystal at l/4
+  # p1_crys_sf: [0.004, 0.03863932]  # base setup: surface of crystal at l/4
+  # p2_crys_in: [0, 0.06363932]  # base setup: center of crystal at l/2
+  # p2_crys_sf: [0.004, 0.06363932]  # base setup: surface of crystal at l/2
+  # p3_crys_in: [0, 0.08863932]  # base setup: center of crystal at 3l/4
+  # p3_crys_sf: [0.004, 0.08863932]  # base setup: surface of crystal at 3l/4
+  # p4_crys_tp: [0, 0.11363932]  # base setup: interface between seed & crystal
+  # p5_seed: [0.0009, 0.12363932]  # base setup: center of seed at l/4
+  # p6_seed: [0.0009, 0.13363932]  # base setup: center of seed at l/2
+  # p7_seed: [0.0009, 0.14363932]  # base setup: center of seed at 3l/4
+  # p8_seed: [0.0009, 0.15363932]  # base setup: center of seed at l
+  heatflux-bot: [0.0645, -0.1155]
+  heatflux-side: [0.104, -0.0405]
+
+
+FluxSolver:
+  Exec Solver: 'before saving'
+  Equation: 'String "Flux Solver"'
+  Procedure: '"FluxSolver" "FluxSolver"'
+  Calculate Grad: 'Logical True'
+  Calculate Flux: 'Logical True'
+  Target Variable: 'String "Temperature"'
+  Flux Coefficient: 'String "Heat Conductivity"'
+  Linear System Solver: '"Iterative"'
+  Linear System Convergence Tolerance: 1.0e-8
+  Linear System Iterative Method: '"BiCGStab"'
+  Linear System Max Iterations: 500
+  Linear System Preconditioning: ILU
+  Linear System Residual Output: 0
