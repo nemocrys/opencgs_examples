@@ -27,6 +27,35 @@ The corresponding flow veloctiy and temperature fields (left: snapshot, right: t
   - Simulations using the global Elmer model only are executed with the [run_elmer_simulation.py](run_elmer_simulation.py) script.
   - Simulations using the coupled Elmer-OpenFOAM model only are executed with the [run_coupled_simulation.py](run_coupled_simulation.py) script.
 
+
+## Heat fluxes
+
+- Additional Elmer Solvers can be loaded at [config_elmer.yml](config_elmer.yml), in this case the SaveScalars Solver can store the heat fluxes over selected boundaries. 
+
+- A typical SaveScalar format for the heat fluxes estimation over boundaries is : 
+
+```yaml
+boundary-scalars:
+  Exec Solver: 'after saving'
+  Equation: SaveScalars
+  Procedure: '"SaveData" "SaveScalars"'
+  Filename: '"boundary-scalars.dat"'
+  Output Directory: './results'
+  Operator 1: 'diffusive flux'
+  Variable 1: Temperature
+  Coefficient 1: 'Heat Conductivity'
+```
+
+- To activate the computation, a flag (i.e ``` "save scalars": True ```) has to be assigned at each boundary at [setup_elmer.py](setup_elmer.py).
+
+
+
+- After the simulation execution the heat fluxes can be found in :
+    - boundary-scalars.dat and  boundary-scalars.dat.names files within the similation folder (Elmer Output).
+    - heat-fluxes.yml file at the result folder (OpenCGS post-processing).
+
+
+
 ## Additional details
 
 For a more detailed description including simulation results see:
