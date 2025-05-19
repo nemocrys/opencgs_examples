@@ -54,7 +54,29 @@ boundary-scalars:
     - boundary-scalars.dat and  boundary-scalars.dat.names files within the similation folder (Elmer Output).
     - heat-fluxes.yml file at the result folder (OpenCGS post-processing).
 
+Simulation heat flux results :
 
+| Boundary Name                                 | Value (W) | Description      |
+|-----------------------------------------------|-----------|------------------|
+| crucible_if_crucible_melt                     | 1657.8    | crucible -> melt |
+| crucible_if_crucsup_cruc                      | -5785.6   | crucible         |
+| crucible_support_surf_crucsup                 | -8248.1   | crucible support | 
+| crucible_surf_cruc                            | 4108.8    |                  |
+| crystal_if_crystal_seedholder                 | 2.3       |                  |
+| crystal_if_melt_crystal                       | -1674.2   | melt -> crystal  |
+| crystal_surf_crys                             | 1704.5    |                  |
+| insulation_outside_surf_insout                | 2301.9    | insulation side  |
+| melt_if_crucible_melt                         | -1656.9   |                  |
+| melt_if_melt_crystal                          | 397.3     |                  |
+| melt_surf_melt                                | 1272.4    | melt surface     |
+| vessel_bnd_vessel_outside                     | 27222.3   | vessel outside   |
+| vessel_if_axtop3_vessel                       | -33.4     |                  |
+| vessel_if_graphbotin1_vessel                  | -1522.7   |                  |
+| vessel_if_graphbotout1_vessel                 | -7137.3   |                  |
+| vessel_if_insbot1_vessel                      | -810.6    |                  |
+| vessel_if_insout_vessel                       | -965.2    |                  |
+| vessel_if_vessel_axbotsteel                   | -60.7     |                  |
+| vessel_surf_vesselinside                      | -16137.0  |                  |
 
 ## Additional details
 

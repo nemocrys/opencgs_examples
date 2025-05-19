@@ -32,6 +32,14 @@ An overview of the simulation setup can be found [here](figures/setup.png). The 
 The results are in SI units (W) and the sign points the direction according to the boundary definition in  [setup.py](setup.py).
 
 
+Simulation heat flux results for Tcr=780°C :
+
+| Boundary Name                     | Value (W) |
+|-----------------------------------|-----------|
+| Vessel – bottom axis interface    | 238       |
+| Vessel outside                    | 1633      |
+| Heater                            | 1637      |
+
 ## Additional details
 
 - For a more detailed description including simulation results see:
