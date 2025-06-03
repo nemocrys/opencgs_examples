@@ -3,7 +3,8 @@
 
 ## Overview
 
-An overview of the simulation setup can be found [here](figures/setup.png). The following result corresponds to heating test without growing material:
+
+The current inductive heating test is based on the previous setup, which can be found [here](https://github.com/nemocrys/opencgs_examples/tree/heating_tests_readme/sn-induction_2D). The following result corresponds to heating test without growing material:
 
 ![result-2D-simulation](figures/induction_T.png)
 
@@ -33,14 +34,22 @@ An overview of the simulation setup can be found [here](figures/setup.png). The 
 The results are in SI units (W) and the sign points the direction according to the boundary definition in  [setup.py](setup.py).
 
 
-Simulation heat flux results for Tcr=1000°C :
+Simulation heat flux results for T<sub>cr</sub> =1000°C :
 
-| Boundary Name                     | Value (W) |
-|-----------------------------------|-----------|
-| Inductor                          | 472       |
-| Vessel – bottom axis interface    | 127       |
-| Vessel outside                    | 2538      |
-| **Total**                         | **3010**  |
+| Boundary Name                                 | Value (W) |
+|-----------------------------------------------|-----------|
+| Inductor-Atmosphere boundary                  | 472       |
+| Vessel – Bottom axis interface                | 127       |
+|  Outer Vessel boundary (water cooled-boundary)| 2538      |
+| **Total**                                     | **3010**  |
+
+
+
+From the Elmer output, the **heater power scaling** is 27.0. Multiplying  initial current value  declared in [config_sim.yml](config_sim.yml) (100 A) with the square root of the scale factor, a final inductor current of  **519 A** is obtained.
+
+
+
+
 
 ## Additional details
 

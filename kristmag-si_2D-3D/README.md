@@ -56,30 +56,34 @@ boundary-scalars:
 
 Simulation heat flux results :
 
-| Boundary Name                                 | Value (W) | Description      |
-|-----------------------------------------------|-----------|------------------|
-| crucible_if_crucible_melt                     | 1657.8    | crucible -> melt |
-| crucible_if_crucsup_cruc                      | -5785.6   | crucible         |
-| crucible_support_surf_crucsup                 | -8248.1   | crucible support | 
-| crucible_surf_cruc                            | 4108.8    |                  |
-| crystal_if_crystal_seedholder                 | 2.3       |                  |
-| crystal_if_melt_crystal                       | -1674.2   | melt -> crystal  |
-| crystal_surf_crys                             | 1704.5    |                  |
-| insulation_outside_surf_insout                | 2301.9    | insulation side  |
-| melt_if_crucible_melt                         | -1656.9   |                  |
-| melt_if_melt_crystal                          | 397.3     |                  |
-| melt_surf_melt                                | 1272.4    | melt surface     |
-| vessel_bnd_vessel_outside                     | 27222.3   | vessel outside   |
-| vessel_if_axtop3_vessel                       | -33.4     |                  |
-| vessel_if_graphbotin1_vessel                  | -1522.7   |                  |
-| vessel_if_graphbotout1_vessel                 | -7137.3   |                  |
-| vessel_if_insbot1_vessel                      | -810.6    |                  |
-| vessel_if_insout_vessel                       | -965.2    |                  |
-| vessel_if_vessel_axbotsteel                   | -60.7     |                  |
-| vessel_surf_vesselinside                      | -16137.0  |                  |
+| Boundary Name                                 | Value (W) | Description                      | Numbering |
+|-----------------------------------------------|-----------|----------------------------------|-----------|
+| crucible_if_crucible_melt                     | 1657.8    | crucible -> melt                 | (1)       |
+| crucible_if_crucsup_cruc                      | -5785.6   | crucible -> crucible support     | (2)       |
+| crucible_support_surf_crucsup                 | -8248.1   | crucible support -> atmosphere   | (3)       |
+| crucible_surf_cruc                            | 4108.8    | crucible -> atmosphere           | (4)       |
+| crystal_if_crystal_seedholder                 | 2.3       | crystal -> seedholder            | (5)       |
+| crystal_if_melt_crystal                       | -1674.2   | melt -> crystal                  | (6)       |
+| crystal_surf_crys                             | 1704.5    | crystal -> atmosphere            | (7)       |
+| insulation_outside_surf_insout                | 2301.9    | insulation outside -> atmosphere | (8)       |
+| melt_surf_melt                                | 1272.4    | melt -> atmosphere               | (9)       |
+| vessel_bnd_vessel_outside                     | 27222.3   | vessel outer surface             |           |
+| vessel_if_axtop3_vessel                       | -33.4     |                                  | --        |
+| vessel_if_graphbotin1_vessel                  | -1522.7   |                                  | --        |
+| vessel_if_graphbotout1_vessel                 | -7137.3   |                                  | --        |
+| vessel_if_insbot1_vessel                      | -810.6    |                                  | --        |
+| vessel_if_insout_vessel                       | -965.2    |                                  | --        |
+| vessel_if_vessel_axbotsteel                   | -60.7     |                                  | --        |
+| vessel_surf_vesselinside                      | -16137.0  | vessel inner surface             | --        |
+
+
+The last seven heat‐flux boundaries, sum to a total inside heat flux of **26667 W** , where the negative signs denote heat absorption by the vessel.
+
+From the Elmer output, the **heater power scaling** is 0.922. The initial power values for the resistance heaters declared in [config_sim.yml](config_sim.yml) are 5000 W, 11800 W and 12500 W for  for the side-bottom, side-middle, and side-top heaters, respectively. The combined scaled power from all heaters is **27 kW**. 
+
 
 ## Additional details
 
 For a more detailed description including simulation results see:
 
-> A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024.
+> A. Wintzer, *Validation of multiphysical models for Czochralski crystal growth*. PhD thesis, Technische Universität Berlin, Berlin, 2024. [https://doi.org/10.14279/depositonce-20957](https://doi.org/10.14279/depositonce-20957)

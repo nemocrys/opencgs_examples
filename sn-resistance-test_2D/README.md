@@ -4,7 +4,9 @@
 
 ## Overview
 
-An overview of the simulation setup can be found [here](figures/setup.png). The following result corresponds to heating test with full insulation :
+The current resistance heating test is based on the previous setup, which can be found [here](https://github.com/nemocrys/opencgs_examples/tree/heating_tests_readme/sn-resistance_2D). The following results correspond to the heating test with insulation:
+
+
 
 ![result-2D-simulation](figures/resistive_T.png)
 
@@ -32,13 +34,19 @@ An overview of the simulation setup can be found [here](figures/setup.png). The 
 The results are in SI units (W) and the sign points the direction according to the boundary definition in  [setup.py](setup.py).
 
 
-Simulation heat flux results for Tcr=780°C :
+Simulation heat flux results for T<sub>cr</sub> = 780 °C :
 
-| Boundary Name                     | Value (W) |
-|-----------------------------------|-----------|
-| Vessel – bottom axis interface    | 238       |
-| Vessel outside                    | 1633      |
-| Heater                            | 1637      |
+| Boundary Name                     | Value (W) | Description                                     |
+|-----------------------------------|-----------|-------------------------------------------------|
+| vessel_if_axbt_vessel             | 238       | Vessel-Bottom Axis interface                    |
+| vessel_bnd_vessel_outside         | 1633      | Outer Vessel boundary (water-cooled boundary)    |
+| heater_bnd_heater                 | 1637      | Heater-Atmosphere boundary                      |
+
+
+The heating power is computed iteratively to match the target crucible temperature. From the Elmer output, the **heater power scaling** : 3.27. Multiplying the scaling factor by the initial power value declared in [config_sim.yml](config_sim.yml) (i.e 500 W)  gives a total power of **1637 W**.
+
+
+
 
 ## Additional details
 

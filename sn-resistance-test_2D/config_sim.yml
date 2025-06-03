@@ -25,7 +25,7 @@ heating_resistance:
   power: 149
 
 smart-heater:
-  T: 505  # melting point tin
+  T: 505 # melting point tin
   control-point: True  # if False: use T at melt-crystal interface (triple point)
   x: 0.03   # TE in crucible
   y: 0.0
